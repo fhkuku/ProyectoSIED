@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+@RenderPage("~/Views/Shared/header.cshtml")
+
+<body>
+    <div id='loader'>
+        <div class="spinner"></div>
+    </div>
+    
+    <div class="wrapper ">
+        @RenderPage("~/Views/Shared/sideBar.cshtml")
+
+        <div class="main-panel">
+            @RenderPage("~/Views/Shared/nav.cshtml")
+
+            @RenderBody()
+
+            @RenderPage("~/Views/Shared/footer.cshtml")
+        </div>
+    </div>
+    <div class="modal fade" id="modalEdiciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="title"></h6>
+                </div>
+                <div class="modal-body">
+                    <form id="contenedor" method="post" class="FormAjax">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="message" class="ResponseAjax"></div>
+    @RenderPage("~/Views/Shared/scripts.cshtml")
+
+
+
+
+</body>
+</html>

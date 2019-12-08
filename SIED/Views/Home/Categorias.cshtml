@@ -1,0 +1,93 @@
+﻿@model SIED.CategoriaPregunta
+@{
+    ViewBag.Title = "Categorias";
+}
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="card card-user">
+                    <div class="card-header">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#colapsar" aria-expanded="true" aria-controls="collapseOne">
+                            Añadir Categoría
+                            <i class="nc-icon nc-icon nc-minimal-down"></i>
+                        </a>
+                    </div>
+                    <div id="colapsar" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                        <form class="card-body FormAjax" data-form="save" action="~/BancoPreguntas/AgregarCategoria" method="post">
+                            <div class="row p-3">
+                                <div class="col-md-8 px-2">
+                                    <div class="form-row">
+                                        <label>Nombre de la categoría</label>
+                                        @Html.LabelFor(model => model.nombre)
+                                        @Html.TextBoxFor(model=>model.nombre, new { @class = "form-control formulario",@placeholder="Ingrese el nombre" })
+                                        @Html.ValidationMessageFor(model => model.nombre, "", new { @class ="text-danger"})
+                                    </div>
+                                </div>
+                                <div class="col-md-12 px-1">
+                                    <div class="form-group">
+                                        <label>Información sobre la categoría</label>
+                                        @Html.TextAreaFor(model=>model.comentario, new {@class="form-control formulario", @placeholder="Ingrese un comentario sobre la categoría"})
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="update ml-auto mr-auto">
+                                    <button type="submit" class="btn btn-primary btn-round boton">Añadir categoría</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <button class="borrarCheckItem"></button>
+                    <div class="col-md-12">
+                        <div class="card card-body">
+                            <table id="table_categoria" class="display table-bordered table-hover table responsive wrap" style="width:100%;">
+                                <thead>
+                                    <tr>
+                                        <th width="5%"><input type="checkbox" id="check" /></th>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Comentario</th>
+                                        <th width="10%">Ver</th>
+                                        <th width="10%">Borrar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!---<div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-globe text-warning"></i>
+                        </div>
+                    </div>
+                    <p class="card-title">Link del Horario</p>
+
+
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+        </div>
+        </div>

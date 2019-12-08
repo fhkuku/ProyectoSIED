@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Pagina de inicio";
+}
+
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-5 col-md-4">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-globe text-warning"></i>
+                                </div>
+                            </div>
+                            <p class="card-title">Link del Horario</p>
+
+
+                        </div>
+                    </div>
+                    <div class="card-footer ">
+                        <hr>
+                        <div class="stats">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card card-user">
+                    <div class="card-header">
+                        <h5 class="card-title">Entraga de calificaciones</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-3 pr-1">
+                                    <div class="form-group">
+                                        <label>Primer Parcial </label>
+                                        <input type="datetime-local" class="form-control" placeholder="" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-1">
+                                    <div class="form-group">
+                                        <label>Segundo Parcial</label>
+                                        <input type="datetime-local" class="form-control" placeholder="" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 pl-1">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Tercer parcial</label>
+                                        <input type="datetime-local" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="update ml-auto mr-auto">
+                                    <button type="submit" class="btn btn-primary btn-round">Generar Calendario</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

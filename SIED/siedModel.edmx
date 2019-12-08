@@ -1,0 +1,2488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="siedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alumnos">
+          <Key>
+            <PropertyRef Name="IDAlumno" />
+          </Key>
+          <Property Name="IDAlumno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomAlumno" Type="varchar" MaxLength="100" />
+          <Property Name="ApePatAlumno" Type="varchar" MaxLength="50" />
+          <Property Name="ApeMatAlumno" Type="varchar" MaxLength="50" />
+          <Property Name="TelAlumno" Type="varchar" MaxLength="50" />
+          <Property Name="IngresoAlumno" Type="datetime" />
+          <Property Name="IDTipoAlumno" Type="int" />
+          <Property Name="FotoAlumno" Type="varchar(max)" />
+          <Property Name="FotoAlumnoCredencial" Type="varchar(max)" />
+          <Property Name="CalleAlumno" Type="varchar" MaxLength="50" />
+          <Property Name="NumeroAlumno" Type="varchar" MaxLength="50" />
+          <Property Name="ColoniaAlumno" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoPostalAlumno" Type="varchar" MaxLength="15" />
+          <Property Name="IDMunicipioAlumno" Type="int" />
+          <Property Name="NomPadreAlumno" Type="varchar" MaxLength="200" />
+          <Property Name="TelPadreAlumno" Type="varchar" MaxLength="50" />
+          <Property Name="NomMadreAlumno" Type="varchar" MaxLength="200" />
+          <Property Name="TelMadreAlumno" Type="varchar" MaxLength="50" />
+          <Property Name="NomTutorAlumno" Type="varchar" MaxLength="200" />
+          <Property Name="TelTutorAlumno" Type="varchar" MaxLength="50" />
+          <Property Name="IDDocumentosAlumno" Type="int" />
+          <Property Name="IDEscProAlumno" Type="int" />
+          <Property Name="RevalidaAlumno" Type="tinyint" />
+          <Property Name="NuevoAlumno" Type="tinyint" />
+          <Property Name="FechaNacAlumno" Type="date" />
+          <Property Name="FechaBaja" Type="nchar" MaxLength="10" />
+          <Property Name="CurpAlumno" Type="varchar" MaxLength="18" />
+          <Property Name="UsuarioAlumno" Type="varchar(max)" />
+          <Property Name="ContraseñaAlumno" Type="varchar(max)" />
+          <Property Name="IDGrupo" Type="int" />
+          <Property Name="IDTurno" Type="int" />
+          <Property Name="Matricula" Type="varchar" MaxLength="50" />
+          <Property Name="IDSemestrePreinscripcion" Type="int" />
+          <Property Name="FotoTabla" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Asignaturas">
+          <Key>
+            <PropertyRef Name="IDAsignatura" />
+          </Key>
+          <Property Name="IDAsignatura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomAsig" Type="varchar" MaxLength="200" />
+          <Property Name="AbrevAsig" Type="varchar" MaxLength="10" />
+          <Property Name="IDSemestreAsig" Type="int" />
+          <Property Name="IDTipoAsig" Type="int" />
+          <Property Name="IDModalidadAsig" Type="int" />
+          <Property Name="IDPlanEstudios" Type="int" />
+          <Property Name="CreditosAsig" Type="int" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="RequisitosAsig" Type="varchar(max)" />
+          <Property Name="HorasPre" Type="int" />
+          <Property Name="HorasNoPre" Type="int" />
+          <Property Name="Duracion" Type="int" />
+          <Property Name="Proceso" Type="int" />
+          <Property Name="Producto" Type="int" />
+        </EntityType>
+        <EntityType Name="Aviso">
+          <Key>
+            <PropertyRef Name="IDAviso" />
+          </Key>
+          <Property Name="IDAviso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDMaestro" Type="int" />
+          <Property Name="IDAlumno" Type="int" />
+          <Property Name="TextoAviso" Type="text" />
+          <Property Name="EstadoAviso" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="AvisosPadres">
+          <Key>
+            <PropertyRef Name="IDAviso" />
+          </Key>
+          <Property Name="IDAviso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TextoAviso" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Calificaciones">
+          <Key>
+            <PropertyRef Name="IDCalificacion" />
+          </Key>
+          <Property Name="IDCalificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDAlumno" Type="int" />
+          <Property Name="IDAsignatura" Type="int" />
+          <Property Name="IDMomento" Type="int" />
+          <Property Name="Calificacion" Type="int" />
+          <Property Name="IDGrupo" Type="int" />
+          <Property Name="Inasistencias" Type="int" />
+          <Property Name="FechaCaptura" Type="date" />
+        </EntityType>
+        <EntityType Name="CalificacionesAlumno">
+          <Key>
+            <PropertyRef Name="IDCalificacionAlum" />
+          </Key>
+          <Property Name="IDCalificacionAlum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDAlumno" Type="int" />
+          <Property Name="IDAsignatura" Type="int" />
+          <Property Name="IDMomento" Type="int" />
+          <Property Name="Calificacion" Type="int" />
+          <Property Name="IDGrupo" Type="int" />
+          <Property Name="Inasistencias" Type="int" />
+          <Property Name="FechaCaptura" Type="date" />
+        </EntityType>
+        <EntityType Name="CategoriaPregunta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="comentario" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="CicloEscolar">
+          <Key>
+            <PropertyRef Name="IDCicloEscolar" />
+          </Key>
+          <Property Name="IDCicloEscolar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="FechaFin" Type="date" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="FechaInicioDocs" Type="date" />
+          <Property Name="FechaFinDocs" Type="date" />
+        </EntityType>
+        <EntityType Name="DatosEscuela">
+          <Key>
+            <PropertyRef Name="IDEscuela" />
+          </Key>
+          <Property Name="IDEscuela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEsc" Type="varchar" MaxLength="100" />
+          <Property Name="ClaveEsc" Type="varchar" MaxLength="50" />
+          <Property Name="CalleEsc" Type="varchar" MaxLength="50" />
+          <Property Name="NumeroEsc" Type="varchar" MaxLength="50" />
+          <Property Name="ColoniaEsc" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoPostalEsc" Type="varchar" MaxLength="15" />
+          <Property Name="IDMunicipio" Type="int" />
+          <Property Name="TelEscuela" Type="varchar" MaxLength="50" />
+          <Property Name="EmailEsc" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DepartamentosEscuela">
+          <Key>
+            <PropertyRef Name="IDDepartamentos" />
+          </Key>
+          <Property Name="IDDepartamentos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreDep" Type="varchar" MaxLength="50" />
+          <Property Name="IDEncargado" Type="int" />
+          <Property Name="IDEscuela" Type="int" />
+          <Property Name="StatusDep" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="DocumentosAlumno">
+          <Key>
+            <PropertyRef Name="IDDocumentos" />
+          </Key>
+          <Property Name="IDDocumentos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActaNacimiento" Type="tinyint" />
+          <Property Name="Fotografias" Type="tinyint" />
+          <Property Name="Curp" Type="tinyint" />
+          <Property Name="Constancia" Type="tinyint" />
+          <Property Name="ComprobanteDomiciliario" Type="tinyint" />
+          <Property Name="BoletaCalificaciones" Type="tinyint" />
+          <Property Name="CertificadoParcial" Type="tinyint" />
+          <Property Name="OficioRevalidacion" Type="tinyint" />
+          <Property Name="ConstanciaMedia" Type="tinyint" />
+          <Property Name="CertificadoSecundaria" Type="tinyint" />
+          <Property Name="Otros" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="EscuelasProcedenciaAlumnos">
+          <Key>
+            <PropertyRef Name="IDEscProAlumno" />
+          </Key>
+          <Property Name="IDEscProAlumno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEscPro" Type="varchar(max)" />
+          <Property Name="ClaveEscPro" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="IDEstado" />
+          </Key>
+          <Property Name="IDEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="IDPais" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FechaCalificacion">
+          <Key>
+            <PropertyRef Name="IDFechaCalif" />
+          </Key>
+          <Property Name="IDFechaCalif" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPeriodo" Type="int" />
+          <Property Name="IDMomento" Type="int" />
+          <Property Name="FechaInicioCalif" Type="date" />
+          <Property Name="FechaFinCalif" Type="date" />
+        </EntityType>
+        <EntityType Name="GrupoAsignatura">
+          <Key>
+            <PropertyRef Name="IDGrupoAsig" />
+          </Key>
+          <Property Name="IDGrupoAsig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDGrupo" Type="int" />
+          <Property Name="IDAsignatura" Type="int" />
+        </EntityType>
+        <EntityType Name="Grupos">
+          <Key>
+            <PropertyRef Name="IDGrupo" />
+          </Key>
+          <Property Name="IDGrupo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreGrupo" Type="varchar" MaxLength="50" />
+          <Property Name="IDPeriodo" Type="int" />
+          <Property Name="IDPlanEstudio" Type="int" />
+          <Property Name="IDSemestre" Type="int" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="MaestroGrupos">
+          <Key>
+            <PropertyRef Name="IDMaestroGrupo" />
+          </Key>
+          <Property Name="IDMaestroGrupo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDMaestro" Type="int" />
+          <Property Name="IDGrupo" Type="int" />
+          <Property Name="IDAsignatura" Type="int" />
+          <Property Name="IDPeriodo" Type="int" />
+        </EntityType>
+        <EntityType Name="Maestros">
+          <Key>
+            <PropertyRef Name="IDMaestro" />
+          </Key>
+          <Property Name="IDMaestro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomMaestro" Type="varchar" MaxLength="100" />
+          <Property Name="ApePatMaestro" Type="varchar" MaxLength="50" />
+          <Property Name="ApeMatMaestro" Type="varchar" MaxLength="50" />
+          <Property Name="TelMaestro" Type="varchar" MaxLength="50" />
+          <Property Name="CorreoMaestro" Type="varchar" MaxLength="50" />
+          <Property Name="CedulaMaestro" Type="varchar" MaxLength="50" />
+          <Property Name="IngresoMaestro" Type="datetime" />
+          <Property Name="FotoMaestro" Type="varchar(max)" />
+          <Property Name="FotoMaestroCredencial" Type="varchar(max)" />
+          <Property Name="CurriculumMaestro" Type="varchar(max)" />
+          <Property Name="IDTipoMaestro" Type="int" />
+          <Property Name="GradoAcademicoMaestro" Type="varchar" MaxLength="100" />
+          <Property Name="DireccionMaestro" Type="varchar(max)" />
+          <Property Name="IDMunicipioMaestro" Type="int" />
+          <Property Name="StatusMaestro" Type="tinyint" />
+          <Property Name="UsuarioMaestro" Type="varchar(max)" />
+          <Property Name="ContraseñaMaestro" Type="varchar(max)" />
+          <Property Name="Sexo" Type="int" />
+          <Property Name="UltimoGrado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Mensajes">
+          <Key>
+            <PropertyRef Name="IDMensaje" />
+          </Key>
+          <Property Name="IDMensaje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDRemitente" Type="int" />
+          <Property Name="IDDestinatario" Type="int" />
+          <Property Name="Asunto" Type="varchar(max)" />
+          <Property Name="Mensaje" Type="varchar(max)" />
+          <Property Name="Fecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ModalidadAsignaturas">
+          <Key>
+            <PropertyRef Name="IDModalidadAsig" />
+          </Key>
+          <Property Name="IDModalidadAsig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MomentoCalificacion">
+          <Key>
+            <PropertyRef Name="IDMomento" />
+          </Key>
+          <Property Name="IDMomento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="IDMunicipio" />
+          </Key>
+          <Property Name="IDMunicipio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="IDEstado" Type="int" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="IDPais" />
+          </Key>
+          <Property Name="IDPais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PeriodoEscolar">
+          <Key>
+            <PropertyRef Name="IDPeriodo" />
+          </Key>
+          <Property Name="IDPeriodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="FechaFin" Type="date" />
+          <Property Name="IDCicloEscolar" Type="int" />
+        </EntityType>
+        <EntityType Name="PlanesEstudio">
+          <Key>
+            <PropertyRef Name="IDPlanEstudios" />
+          </Key>
+          <Property Name="IDPlanEstudios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Semestres">
+          <Key>
+            <PropertyRef Name="IDSemestre" />
+          </Key>
+          <Property Name="IDSemestre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SolicitudBaja">
+          <Key>
+            <PropertyRef Name="IDSolicitud" />
+          </Key>
+          <Property Name="IDSolicitud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoBaja" Type="varchar" MaxLength="50" />
+          <Property Name="Motivo" Type="varchar(max)" />
+          <Property Name="IDAlumno" Type="int" />
+          <Property Name="NoOficio" Type="varchar" MaxLength="50" />
+          <Property Name="IDPeriodo" Type="int" />
+          <Property Name="FechaBaja" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TipoAlumno">
+          <Key>
+            <PropertyRef Name="IDTIpoAlumno" />
+          </Key>
+          <Property Name="IDTIpoAlumno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TipoAsignaturas">
+          <Key>
+            <PropertyRef Name="IDTipoAsig" />
+          </Key>
+          <Property Name="IDTipoAsig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TipoMaestro">
+          <Key>
+            <PropertyRef Name="IDTipoMaestro" />
+          </Key>
+          <Property Name="IDTipoMaestro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Directivo" Type="tinyint" />
+          <Property Name="SecreAdmin" Type="tinyint" />
+          <Property Name="SecreAcade" Type="tinyint" />
+          <Property Name="ControlEsc" Type="tinyint" />
+          <Property Name="Docente" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="TurnosEscuelas">
+          <Key>
+            <PropertyRef Name="IDTurno" />
+          </Key>
+          <Property Name="IDTurno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Alumnos_DocumentosAlumno">
+          <End Role="DocumentosAlumno" Type="Self.DocumentosAlumno" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentosAlumno">
+              <PropertyRef Name="IDDocumentos" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDDocumentosAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumnos_EscuelasProcedenciaAlumnos">
+          <End Role="EscuelasProcedenciaAlumnos" Type="Self.EscuelasProcedenciaAlumnos" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EscuelasProcedenciaAlumnos">
+              <PropertyRef Name="IDEscProAlumno" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDEscProAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumnos_Grupos">
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupos">
+              <PropertyRef Name="IDGrupo" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumnos_Municipio">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="IDMunicipio" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDMunicipioAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumnos_Semestres">
+          <End Role="Semestres" Type="Self.Semestres" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semestres">
+              <PropertyRef Name="IDSemestre" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDSemestrePreinscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumnos_TipoAlumno">
+          <End Role="TipoAlumno" Type="Self.TipoAlumno" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAlumno">
+              <PropertyRef Name="IDTIpoAlumno" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDTipoAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumnos_TurnosEscuelas">
+          <End Role="TurnosEscuelas" Type="Self.TurnosEscuelas" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TurnosEscuelas">
+              <PropertyRef Name="IDTurno" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asignaturas_ModalidadAsignaturas">
+          <End Role="ModalidadAsignaturas" Type="Self.ModalidadAsignaturas" Multiplicity="0..1" />
+          <End Role="Asignaturas" Type="Self.Asignaturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModalidadAsignaturas">
+              <PropertyRef Name="IDModalidadAsig" />
+            </Principal>
+            <Dependent Role="Asignaturas">
+              <PropertyRef Name="IDModalidadAsig" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asignaturas_PlanesEstudio">
+          <End Role="PlanesEstudio" Type="Self.PlanesEstudio" Multiplicity="0..1" />
+          <End Role="Asignaturas" Type="Self.Asignaturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanesEstudio">
+              <PropertyRef Name="IDPlanEstudios" />
+            </Principal>
+            <Dependent Role="Asignaturas">
+              <PropertyRef Name="IDPlanEstudios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asignaturas_Semestres">
+          <End Role="Semestres" Type="Self.Semestres" Multiplicity="0..1" />
+          <End Role="Asignaturas" Type="Self.Asignaturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semestres">
+              <PropertyRef Name="IDSemestre" />
+            </Principal>
+            <Dependent Role="Asignaturas">
+              <PropertyRef Name="IDSemestreAsig" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asignaturas_TipoAsignaturas">
+          <End Role="TipoAsignaturas" Type="Self.TipoAsignaturas" Multiplicity="0..1" />
+          <End Role="Asignaturas" Type="Self.Asignaturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAsignaturas">
+              <PropertyRef Name="IDTipoAsig" />
+            </Principal>
+            <Dependent Role="Asignaturas">
+              <PropertyRef Name="IDTipoAsig" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aviso_Alumnos">
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="0..1" />
+          <End Role="Aviso" Type="Self.Aviso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="IDAlumno" />
+            </Principal>
+            <Dependent Role="Aviso">
+              <PropertyRef Name="IDAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aviso_Maestros">
+          <End Role="Maestros" Type="Self.Maestros" Multiplicity="0..1" />
+          <End Role="Aviso" Type="Self.Aviso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maestros">
+              <PropertyRef Name="IDMaestro" />
+            </Principal>
+            <Dependent Role="Aviso">
+              <PropertyRef Name="IDMaestro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificaciones_Alumnos">
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="IDAlumno" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IDAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificaciones_Asignaturas">
+          <End Role="Asignaturas" Type="Self.Asignaturas" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asignaturas">
+              <PropertyRef Name="IDAsignatura" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IDAsignatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificaciones_Grupos">
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupos">
+              <PropertyRef Name="IDGrupo" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IDGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificaciones_MomentoCalificacion">
+          <End Role="MomentoCalificacion" Type="Self.MomentoCalificacion" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MomentoCalificacion">
+              <PropertyRef Name="IDMomento" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IDMomento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DepartamentosEscuela_DatosEscuela">
+          <End Role="DatosEscuela" Type="Self.DatosEscuela" Multiplicity="0..1" />
+          <End Role="DepartamentosEscuela" Type="Self.DepartamentosEscuela" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosEscuela">
+              <PropertyRef Name="IDEscuela" />
+            </Principal>
+            <Dependent Role="DepartamentosEscuela">
+              <PropertyRef Name="IDEscuela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DepartamentosEscuela_Maestros">
+          <End Role="Maestros" Type="Self.Maestros" Multiplicity="0..1" />
+          <End Role="DepartamentosEscuela" Type="Self.DepartamentosEscuela" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maestros">
+              <PropertyRef Name="IDMaestro" />
+            </Principal>
+            <Dependent Role="DepartamentosEscuela">
+              <PropertyRef Name="IDEncargado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Estado" Type="Self.Estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="IDPais" />
+            </Principal>
+            <Dependent Role="Estado">
+              <PropertyRef Name="IDPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FechaCalificacion_FechaCalificacion">
+          <End Role="MomentoCalificacion" Type="Self.MomentoCalificacion" Multiplicity="0..1" />
+          <End Role="FechaCalificacion" Type="Self.FechaCalificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MomentoCalificacion">
+              <PropertyRef Name="IDMomento" />
+            </Principal>
+            <Dependent Role="FechaCalificacion">
+              <PropertyRef Name="IDMomento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FechaCalificacion_PeriodoEscolar">
+          <End Role="PeriodoEscolar" Type="Self.PeriodoEscolar" Multiplicity="0..1" />
+          <End Role="FechaCalificacion" Type="Self.FechaCalificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PeriodoEscolar">
+              <PropertyRef Name="IDPeriodo" />
+            </Principal>
+            <Dependent Role="FechaCalificacion">
+              <PropertyRef Name="IDPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupoAsignatura_Asignaturas">
+          <End Role="Asignaturas" Type="Self.Asignaturas" Multiplicity="0..1" />
+          <End Role="GrupoAsignatura" Type="Self.GrupoAsignatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asignaturas">
+              <PropertyRef Name="IDAsignatura" />
+            </Principal>
+            <Dependent Role="GrupoAsignatura">
+              <PropertyRef Name="IDAsignatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupoAsignatura_Grupos">
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="0..1" />
+          <End Role="GrupoAsignatura" Type="Self.GrupoAsignatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupos">
+              <PropertyRef Name="IDGrupo" />
+            </Principal>
+            <Dependent Role="GrupoAsignatura">
+              <PropertyRef Name="IDGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupos_PeriodoEscolar">
+          <End Role="PeriodoEscolar" Type="Self.PeriodoEscolar" Multiplicity="0..1" />
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PeriodoEscolar">
+              <PropertyRef Name="IDPeriodo" />
+            </Principal>
+            <Dependent Role="Grupos">
+              <PropertyRef Name="IDPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupos_PlanesEstudio">
+          <End Role="PlanesEstudio" Type="Self.PlanesEstudio" Multiplicity="0..1" />
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanesEstudio">
+              <PropertyRef Name="IDPlanEstudios" />
+            </Principal>
+            <Dependent Role="Grupos">
+              <PropertyRef Name="IDPlanEstudio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupos_Semestres">
+          <End Role="Semestres" Type="Self.Semestres" Multiplicity="0..1" />
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semestres">
+              <PropertyRef Name="IDSemestre" />
+            </Principal>
+            <Dependent Role="Grupos">
+              <PropertyRef Name="IDSemestre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroGrupos_Asignaturas">
+          <End Role="Asignaturas" Type="Self.Asignaturas" Multiplicity="0..1" />
+          <End Role="MaestroGrupos" Type="Self.MaestroGrupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asignaturas">
+              <PropertyRef Name="IDAsignatura" />
+            </Principal>
+            <Dependent Role="MaestroGrupos">
+              <PropertyRef Name="IDAsignatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroGrupos_Grupos">
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="0..1" />
+          <End Role="MaestroGrupos" Type="Self.MaestroGrupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupos">
+              <PropertyRef Name="IDGrupo" />
+            </Principal>
+            <Dependent Role="MaestroGrupos">
+              <PropertyRef Name="IDGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroGrupos_Maestros">
+          <End Role="Maestros" Type="Self.Maestros" Multiplicity="0..1" />
+          <End Role="MaestroGrupos" Type="Self.MaestroGrupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maestros">
+              <PropertyRef Name="IDMaestro" />
+            </Principal>
+            <Dependent Role="MaestroGrupos">
+              <PropertyRef Name="IDMaestro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroGrupos_PeriodoEscolar">
+          <End Role="PeriodoEscolar" Type="Self.PeriodoEscolar" Multiplicity="0..1" />
+          <End Role="MaestroGrupos" Type="Self.MaestroGrupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PeriodoEscolar">
+              <PropertyRef Name="IDPeriodo" />
+            </Principal>
+            <Dependent Role="MaestroGrupos">
+              <PropertyRef Name="IDPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maestros_Municipio">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="0..1" />
+          <End Role="Maestros" Type="Self.Maestros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="IDMunicipio" />
+            </Principal>
+            <Dependent Role="Maestros">
+              <PropertyRef Name="IDMunicipioMaestro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maestros_TipoMaestro">
+          <End Role="TipoMaestro" Type="Self.TipoMaestro" Multiplicity="0..1" />
+          <End Role="Maestros" Type="Self.Maestros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMaestro">
+              <PropertyRef Name="IDTipoMaestro" />
+            </Principal>
+            <Dependent Role="Maestros">
+              <PropertyRef Name="IDTipoMaestro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Municipio_Estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IDEstado" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="IDEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PeriodoEscolar_CicloEscolar">
+          <End Role="CicloEscolar" Type="Self.CicloEscolar" Multiplicity="0..1" />
+          <End Role="PeriodoEscolar" Type="Self.PeriodoEscolar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CicloEscolar">
+              <PropertyRef Name="IDCicloEscolar" />
+            </Principal>
+            <Dependent Role="PeriodoEscolar">
+              <PropertyRef Name="IDCicloEscolar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SolicitudBaja_Alumnos">
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="0..1" />
+          <End Role="SolicitudBaja" Type="Self.SolicitudBaja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="IDAlumno" />
+            </Principal>
+            <Dependent Role="SolicitudBaja">
+              <PropertyRef Name="IDAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SolicitudBaja_PeriodoEscolar">
+          <End Role="PeriodoEscolar" Type="Self.PeriodoEscolar" Multiplicity="0..1" />
+          <End Role="SolicitudBaja" Type="Self.SolicitudBaja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PeriodoEscolar">
+              <PropertyRef Name="IDPeriodo" />
+            </Principal>
+            <Dependent Role="SolicitudBaja">
+              <PropertyRef Name="IDPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="siedModelStoreContainer">
+          <EntitySet Name="Alumnos" EntityType="Self.Alumnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asignaturas" EntityType="Self.Asignaturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Aviso" EntityType="Self.Aviso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AvisosPadres" EntityType="Self.AvisosPadres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calificaciones" EntityType="Self.Calificaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CalificacionesAlumno" EntityType="Self.CalificacionesAlumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoriaPregunta" EntityType="Self.CategoriaPregunta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CicloEscolar" EntityType="Self.CicloEscolar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatosEscuela" EntityType="Self.DatosEscuela" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartamentosEscuela" EntityType="Self.DepartamentosEscuela" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentosAlumno" EntityType="Self.DocumentosAlumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EscuelasProcedenciaAlumnos" EntityType="Self.EscuelasProcedenciaAlumnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FechaCalificacion" EntityType="Self.FechaCalificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GrupoAsignatura" EntityType="Self.GrupoAsignatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grupos" EntityType="Self.Grupos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaestroGrupos" EntityType="Self.MaestroGrupos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maestros" EntityType="Self.Maestros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mensajes" EntityType="Self.Mensajes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModalidadAsignaturas" EntityType="Self.ModalidadAsignaturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MomentoCalificacion" EntityType="Self.MomentoCalificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PeriodoEscolar" EntityType="Self.PeriodoEscolar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanesEstudio" EntityType="Self.PlanesEstudio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Semestres" EntityType="Self.Semestres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SolicitudBaja" EntityType="Self.SolicitudBaja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoAlumno" EntityType="Self.TipoAlumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoAsignaturas" EntityType="Self.TipoAsignaturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMaestro" EntityType="Self.TipoMaestro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TurnosEscuelas" EntityType="Self.TurnosEscuelas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Alumnos_DocumentosAlumno" Association="Self.FK_Alumnos_DocumentosAlumno">
+            <End Role="DocumentosAlumno" EntitySet="DocumentosAlumno" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumnos_EscuelasProcedenciaAlumnos" Association="Self.FK_Alumnos_EscuelasProcedenciaAlumnos">
+            <End Role="EscuelasProcedenciaAlumnos" EntitySet="EscuelasProcedenciaAlumnos" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumnos_Grupos" Association="Self.FK_Alumnos_Grupos">
+            <End Role="Grupos" EntitySet="Grupos" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumnos_Municipio" Association="Self.FK_Alumnos_Municipio">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumnos_Semestres" Association="Self.FK_Alumnos_Semestres">
+            <End Role="Semestres" EntitySet="Semestres" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumnos_TipoAlumno" Association="Self.FK_Alumnos_TipoAlumno">
+            <End Role="TipoAlumno" EntitySet="TipoAlumno" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumnos_TurnosEscuelas" Association="Self.FK_Alumnos_TurnosEscuelas">
+            <End Role="TurnosEscuelas" EntitySet="TurnosEscuelas" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asignaturas_ModalidadAsignaturas" Association="Self.FK_Asignaturas_ModalidadAsignaturas">
+            <End Role="ModalidadAsignaturas" EntitySet="ModalidadAsignaturas" />
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asignaturas_PlanesEstudio" Association="Self.FK_Asignaturas_PlanesEstudio">
+            <End Role="PlanesEstudio" EntitySet="PlanesEstudio" />
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asignaturas_Semestres" Association="Self.FK_Asignaturas_Semestres">
+            <End Role="Semestres" EntitySet="Semestres" />
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asignaturas_TipoAsignaturas" Association="Self.FK_Asignaturas_TipoAsignaturas">
+            <End Role="TipoAsignaturas" EntitySet="TipoAsignaturas" />
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aviso_Alumnos" Association="Self.FK_Aviso_Alumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="Aviso" EntitySet="Aviso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aviso_Maestros" Association="Self.FK_Aviso_Maestros">
+            <End Role="Maestros" EntitySet="Maestros" />
+            <End Role="Aviso" EntitySet="Aviso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificaciones_Alumnos" Association="Self.FK_Calificaciones_Alumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificaciones_Asignaturas" Association="Self.FK_Calificaciones_Asignaturas">
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificaciones_Grupos" Association="Self.FK_Calificaciones_Grupos">
+            <End Role="Grupos" EntitySet="Grupos" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificaciones_MomentoCalificacion" Association="Self.FK_Calificaciones_MomentoCalificacion">
+            <End Role="MomentoCalificacion" EntitySet="MomentoCalificacion" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DepartamentosEscuela_DatosEscuela" Association="Self.FK_DepartamentosEscuela_DatosEscuela">
+            <End Role="DatosEscuela" EntitySet="DatosEscuela" />
+            <End Role="DepartamentosEscuela" EntitySet="DepartamentosEscuela" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DepartamentosEscuela_Maestros" Association="Self.FK_DepartamentosEscuela_Maestros">
+            <End Role="Maestros" EntitySet="Maestros" />
+            <End Role="DepartamentosEscuela" EntitySet="DepartamentosEscuela" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_Pais" Association="Self.FK_Estado_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Estado" EntitySet="Estado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FechaCalificacion_FechaCalificacion" Association="Self.FK_FechaCalificacion_FechaCalificacion">
+            <End Role="MomentoCalificacion" EntitySet="MomentoCalificacion" />
+            <End Role="FechaCalificacion" EntitySet="FechaCalificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FechaCalificacion_PeriodoEscolar" Association="Self.FK_FechaCalificacion_PeriodoEscolar">
+            <End Role="PeriodoEscolar" EntitySet="PeriodoEscolar" />
+            <End Role="FechaCalificacion" EntitySet="FechaCalificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupoAsignatura_Asignaturas" Association="Self.FK_GrupoAsignatura_Asignaturas">
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+            <End Role="GrupoAsignatura" EntitySet="GrupoAsignatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupoAsignatura_Grupos" Association="Self.FK_GrupoAsignatura_Grupos">
+            <End Role="Grupos" EntitySet="Grupos" />
+            <End Role="GrupoAsignatura" EntitySet="GrupoAsignatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupos_PeriodoEscolar" Association="Self.FK_Grupos_PeriodoEscolar">
+            <End Role="PeriodoEscolar" EntitySet="PeriodoEscolar" />
+            <End Role="Grupos" EntitySet="Grupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupos_PlanesEstudio" Association="Self.FK_Grupos_PlanesEstudio">
+            <End Role="PlanesEstudio" EntitySet="PlanesEstudio" />
+            <End Role="Grupos" EntitySet="Grupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupos_Semestres" Association="Self.FK_Grupos_Semestres">
+            <End Role="Semestres" EntitySet="Semestres" />
+            <End Role="Grupos" EntitySet="Grupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroGrupos_Asignaturas" Association="Self.FK_MaestroGrupos_Asignaturas">
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+            <End Role="MaestroGrupos" EntitySet="MaestroGrupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroGrupos_Grupos" Association="Self.FK_MaestroGrupos_Grupos">
+            <End Role="Grupos" EntitySet="Grupos" />
+            <End Role="MaestroGrupos" EntitySet="MaestroGrupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroGrupos_Maestros" Association="Self.FK_MaestroGrupos_Maestros">
+            <End Role="Maestros" EntitySet="Maestros" />
+            <End Role="MaestroGrupos" EntitySet="MaestroGrupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroGrupos_PeriodoEscolar" Association="Self.FK_MaestroGrupos_PeriodoEscolar">
+            <End Role="PeriodoEscolar" EntitySet="PeriodoEscolar" />
+            <End Role="MaestroGrupos" EntitySet="MaestroGrupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maestros_Municipio" Association="Self.FK_Maestros_Municipio">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Maestros" EntitySet="Maestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maestros_TipoMaestro" Association="Self.FK_Maestros_TipoMaestro">
+            <End Role="TipoMaestro" EntitySet="TipoMaestro" />
+            <End Role="Maestros" EntitySet="Maestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Municipio_Estado" Association="Self.FK_Municipio_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PeriodoEscolar_CicloEscolar" Association="Self.FK_PeriodoEscolar_CicloEscolar">
+            <End Role="CicloEscolar" EntitySet="CicloEscolar" />
+            <End Role="PeriodoEscolar" EntitySet="PeriodoEscolar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SolicitudBaja_Alumnos" Association="Self.FK_SolicitudBaja_Alumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="SolicitudBaja" EntitySet="SolicitudBaja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SolicitudBaja_PeriodoEscolar" Association="Self.FK_SolicitudBaja_PeriodoEscolar">
+            <End Role="PeriodoEscolar" EntitySet="PeriodoEscolar" />
+            <End Role="SolicitudBaja" EntitySet="SolicitudBaja" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="siedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="IDAlumno" />
+          </Key>
+          <Property Name="IDAlumno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomAlumno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApePatAlumno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApeMatAlumno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TelAlumno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IngresoAlumno" Type="DateTime" Precision="3" />
+          <Property Name="IDTipoAlumno" Type="Int32" />
+          <Property Name="FotoAlumno" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FotoAlumnoCredencial" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CalleAlumno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroAlumno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ColoniaAlumno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoPostalAlumno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="IDMunicipioAlumno" Type="Int32" />
+          <Property Name="NomPadreAlumno" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TelPadreAlumno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NomMadreAlumno" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TelMadreAlumno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NomTutorAlumno" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TelTutorAlumno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDDocumentosAlumno" Type="Int32" />
+          <Property Name="IDEscProAlumno" Type="Int32" />
+          <Property Name="RevalidaAlumno" Type="Byte" />
+          <Property Name="NuevoAlumno" Type="Byte" />
+          <Property Name="FechaNacAlumno" Type="DateTime" Precision="0" />
+          <Property Name="FechaBaja" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CurpAlumno" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlumno" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContraseñaAlumno" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDGrupo" Type="Int32" />
+          <Property Name="IDTurno" Type="Int32" />
+          <Property Name="Matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDSemestrePreinscripcion" Type="Int32" />
+          <Property Name="FotoTabla" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DocumentosAlumno" Relationship="Self.FK_Alumnos_DocumentosAlumno" FromRole="Alumnos" ToRole="DocumentosAlumno" />
+          <NavigationProperty Name="EscuelasProcedenciaAlumno" Relationship="Self.FK_Alumnos_EscuelasProcedenciaAlumnos" FromRole="Alumnos" ToRole="EscuelasProcedenciaAlumnos" />
+          <NavigationProperty Name="Grupos" Relationship="Self.FK_Alumnos_Grupos" FromRole="Alumnos" ToRole="Grupos" />
+          <NavigationProperty Name="Municipio" Relationship="Self.FK_Alumnos_Municipio" FromRole="Alumnos" ToRole="Municipio" />
+          <NavigationProperty Name="Semestre" Relationship="Self.FK_Alumnos_Semestres" FromRole="Alumnos" ToRole="Semestres" />
+          <NavigationProperty Name="TipoAlumno" Relationship="Self.FK_Alumnos_TipoAlumno" FromRole="Alumnos" ToRole="TipoAlumno" />
+          <NavigationProperty Name="TurnosEscuela" Relationship="Self.FK_Alumnos_TurnosEscuelas" FromRole="Alumnos" ToRole="TurnosEscuelas" />
+          <NavigationProperty Name="Avisoes" Relationship="Self.FK_Aviso_Alumnos" FromRole="Alumnos" ToRole="Aviso" />
+          <NavigationProperty Name="Calificaciones" Relationship="Self.FK_Calificaciones_Alumnos" FromRole="Alumnos" ToRole="Calificaciones" />
+          <NavigationProperty Name="SolicitudBajas" Relationship="Self.FK_SolicitudBaja_Alumnos" FromRole="Alumnos" ToRole="SolicitudBaja" />
+        </EntityType>
+        <EntityType Name="Asignatura">
+          <Key>
+            <PropertyRef Name="IDAsignatura" />
+          </Key>
+          <Property Name="IDAsignatura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomAsig" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AbrevAsig" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IDSemestreAsig" Type="Int32" />
+          <Property Name="IDTipoAsig" Type="Int32" />
+          <Property Name="IDModalidadAsig" Type="Int32" />
+          <Property Name="IDPlanEstudios" Type="Int32" />
+          <Property Name="CreditosAsig" Type="Int32" />
+          <Property Name="Status" Type="Byte" />
+          <Property Name="RequisitosAsig" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HorasPre" Type="Int32" />
+          <Property Name="HorasNoPre" Type="Int32" />
+          <Property Name="Duracion" Type="Int32" />
+          <Property Name="Proceso" Type="Int32" />
+          <Property Name="Producto" Type="Int32" />
+          <NavigationProperty Name="ModalidadAsignatura" Relationship="Self.FK_Asignaturas_ModalidadAsignaturas" FromRole="Asignaturas" ToRole="ModalidadAsignaturas" />
+          <NavigationProperty Name="PlanesEstudio" Relationship="Self.FK_Asignaturas_PlanesEstudio" FromRole="Asignaturas" ToRole="PlanesEstudio" />
+          <NavigationProperty Name="Semestre" Relationship="Self.FK_Asignaturas_Semestres" FromRole="Asignaturas" ToRole="Semestres" />
+          <NavigationProperty Name="TipoAsignatura" Relationship="Self.FK_Asignaturas_TipoAsignaturas" FromRole="Asignaturas" ToRole="TipoAsignaturas" />
+          <NavigationProperty Name="Calificaciones" Relationship="Self.FK_Calificaciones_Asignaturas" FromRole="Asignaturas" ToRole="Calificaciones" />
+          <NavigationProperty Name="GrupoAsignaturas" Relationship="Self.FK_GrupoAsignatura_Asignaturas" FromRole="Asignaturas" ToRole="GrupoAsignatura" />
+          <NavigationProperty Name="MaestroGrupos" Relationship="Self.FK_MaestroGrupos_Asignaturas" FromRole="Asignaturas" ToRole="MaestroGrupos" />
+        </EntityType>
+        <EntityType Name="Aviso">
+          <Key>
+            <PropertyRef Name="IDAviso" />
+          </Key>
+          <Property Name="IDAviso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDMaestro" Type="Int32" />
+          <Property Name="IDAlumno" Type="Int32" />
+          <Property Name="TextoAviso" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoAviso" Type="Byte" />
+          <NavigationProperty Name="Alumno" Relationship="Self.FK_Aviso_Alumnos" FromRole="Aviso" ToRole="Alumnos" />
+          <NavigationProperty Name="Maestro" Relationship="Self.FK_Aviso_Maestros" FromRole="Aviso" ToRole="Maestros" />
+        </EntityType>
+        <EntityType Name="AvisosPadre">
+          <Key>
+            <PropertyRef Name="IDAviso" />
+          </Key>
+          <Property Name="IDAviso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TextoAviso" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Calificacione">
+          <Key>
+            <PropertyRef Name="IDCalificacion" />
+          </Key>
+          <Property Name="IDCalificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDAlumno" Type="Int32" />
+          <Property Name="IDAsignatura" Type="Int32" />
+          <Property Name="IDMomento" Type="Int32" />
+          <Property Name="Calificacion" Type="Int32" />
+          <Property Name="IDGrupo" Type="Int32" />
+          <Property Name="Inasistencias" Type="Int32" />
+          <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Alumno" Relationship="Self.FK_Calificaciones_Alumnos" FromRole="Calificaciones" ToRole="Alumnos" />
+          <NavigationProperty Name="Asignatura" Relationship="Self.FK_Calificaciones_Asignaturas" FromRole="Calificaciones" ToRole="Asignaturas" />
+          <NavigationProperty Name="Grupos" Relationship="Self.FK_Calificaciones_Grupos" FromRole="Calificaciones" ToRole="Grupos" />
+          <NavigationProperty Name="MomentoCalificacion" Relationship="Self.FK_Calificaciones_MomentoCalificacion" FromRole="Calificaciones" ToRole="MomentoCalificacion" />
+        </EntityType>
+        <EntityType Name="CategoriaPregunta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CicloEscolar">
+          <Key>
+            <PropertyRef Name="IDCicloEscolar" />
+          </Key>
+          <Property Name="IDCicloEscolar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="FechaFin" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="Byte" />
+          <Property Name="FechaInicioDocs" Type="DateTime" Precision="0" />
+          <Property Name="FechaFinDocs" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PeriodoEscolars" Relationship="Self.FK_PeriodoEscolar_CicloEscolar" FromRole="CicloEscolar" ToRole="PeriodoEscolar" />
+        </EntityType>
+        <EntityType Name="DatosEscuela">
+          <Key>
+            <PropertyRef Name="IDEscuela" />
+          </Key>
+          <Property Name="IDEscuela" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEsc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveEsc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CalleEsc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroEsc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ColoniaEsc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoPostalEsc" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="IDMunicipio" Type="Int32" />
+          <Property Name="TelEscuela" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailEsc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DepartamentosEscuelas" Relationship="Self.FK_DepartamentosEscuela_DatosEscuela" FromRole="DatosEscuela" ToRole="DepartamentosEscuela" />
+        </EntityType>
+        <EntityType Name="DepartamentosEscuela">
+          <Key>
+            <PropertyRef Name="IDDepartamentos" />
+          </Key>
+          <Property Name="IDDepartamentos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreDep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDEncargado" Type="Int32" />
+          <Property Name="IDEscuela" Type="Int32" />
+          <Property Name="StatusDep" Type="Byte" />
+          <NavigationProperty Name="DatosEscuela" Relationship="Self.FK_DepartamentosEscuela_DatosEscuela" FromRole="DepartamentosEscuela" ToRole="DatosEscuela" />
+          <NavigationProperty Name="Maestro" Relationship="Self.FK_DepartamentosEscuela_Maestros" FromRole="DepartamentosEscuela" ToRole="Maestros" />
+        </EntityType>
+        <EntityType Name="DocumentosAlumno">
+          <Key>
+            <PropertyRef Name="IDDocumentos" />
+          </Key>
+          <Property Name="IDDocumentos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActaNacimiento" Type="Byte" />
+          <Property Name="Fotografias" Type="Byte" />
+          <Property Name="Curp" Type="Byte" />
+          <Property Name="Constancia" Type="Byte" />
+          <Property Name="ComprobanteDomiciliario" Type="Byte" />
+          <Property Name="BoletaCalificaciones" Type="Byte" />
+          <Property Name="CertificadoParcial" Type="Byte" />
+          <Property Name="OficioRevalidacion" Type="Byte" />
+          <Property Name="ConstanciaMedia" Type="Byte" />
+          <Property Name="CertificadoSecundaria" Type="Byte" />
+          <Property Name="Otros" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK_Alumnos_DocumentosAlumno" FromRole="DocumentosAlumno" ToRole="Alumnos" />
+        </EntityType>
+        <EntityType Name="EscuelasProcedenciaAlumno">
+          <Key>
+            <PropertyRef Name="IDEscProAlumno" />
+          </Key>
+          <Property Name="IDEscProAlumno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEscPro" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveEscPro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK_Alumnos_EscuelasProcedenciaAlumnos" FromRole="EscuelasProcedenciaAlumnos" ToRole="Alumnos" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="IDEstado" />
+          </Key>
+          <Property Name="IDEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDPais" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pai" Relationship="Self.FK_Estado_Pais" FromRole="Estado" ToRole="Pais" />
+          <NavigationProperty Name="Municipios" Relationship="Self.FK_Municipio_Estado" FromRole="Estado" ToRole="Municipio" />
+        </EntityType>
+        <EntityType Name="FechaCalificacion">
+          <Key>
+            <PropertyRef Name="IDFechaCalif" />
+          </Key>
+          <Property Name="IDFechaCalif" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPeriodo" Type="Int32" />
+          <Property Name="IDMomento" Type="Int32" />
+          <Property Name="FechaInicioCalif" Type="DateTime" Precision="0" />
+          <Property Name="FechaFinCalif" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MomentoCalificacion" Relationship="Self.FK_FechaCalificacion_FechaCalificacion" FromRole="FechaCalificacion" ToRole="MomentoCalificacion" />
+          <NavigationProperty Name="PeriodoEscolar" Relationship="Self.FK_FechaCalificacion_PeriodoEscolar" FromRole="FechaCalificacion" ToRole="PeriodoEscolar" />
+        </EntityType>
+        <EntityType Name="GrupoAsignatura">
+          <Key>
+            <PropertyRef Name="IDGrupoAsig" />
+          </Key>
+          <Property Name="IDGrupoAsig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDGrupo" Type="Int32" />
+          <Property Name="IDAsignatura" Type="Int32" />
+          <NavigationProperty Name="Asignatura" Relationship="Self.FK_GrupoAsignatura_Asignaturas" FromRole="GrupoAsignatura" ToRole="Asignaturas" />
+          <NavigationProperty Name="Grupos" Relationship="Self.FK_GrupoAsignatura_Grupos" FromRole="GrupoAsignatura" ToRole="Grupos" />
+        </EntityType>
+        <EntityType Name="Grupos">
+          <Key>
+            <PropertyRef Name="IDGrupo" />
+          </Key>
+          <Property Name="IDGrupo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreGrupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDPeriodo" Type="Int32" />
+          <Property Name="IDPlanEstudio" Type="Int32" />
+          <Property Name="IDSemestre" Type="Int32" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK_Alumnos_Grupos" FromRole="Grupos" ToRole="Alumnos" />
+          <NavigationProperty Name="Calificaciones" Relationship="Self.FK_Calificaciones_Grupos" FromRole="Grupos" ToRole="Calificaciones" />
+          <NavigationProperty Name="GrupoAsignaturas" Relationship="Self.FK_GrupoAsignatura_Grupos" FromRole="Grupos" ToRole="GrupoAsignatura" />
+          <NavigationProperty Name="PeriodoEscolar" Relationship="Self.FK_Grupos_PeriodoEscolar" FromRole="Grupos" ToRole="PeriodoEscolar" />
+          <NavigationProperty Name="PlanesEstudio" Relationship="Self.FK_Grupos_PlanesEstudio" FromRole="Grupos" ToRole="PlanesEstudio" />
+          <NavigationProperty Name="Semestre" Relationship="Self.FK_Grupos_Semestres" FromRole="Grupos" ToRole="Semestres" />
+          <NavigationProperty Name="MaestroGrupos" Relationship="Self.FK_MaestroGrupos_Grupos" FromRole="Grupos" ToRole="MaestroGrupos" />
+        </EntityType>
+        <EntityType Name="MaestroGrupos">
+          <Key>
+            <PropertyRef Name="IDMaestroGrupo" />
+          </Key>
+          <Property Name="IDMaestroGrupo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDMaestro" Type="Int32" />
+          <Property Name="IDGrupo" Type="Int32" />
+          <Property Name="IDAsignatura" Type="Int32" />
+          <Property Name="IDPeriodo" Type="Int32" />
+          <NavigationProperty Name="Asignatura" Relationship="Self.FK_MaestroGrupos_Asignaturas" FromRole="MaestroGrupos" ToRole="Asignaturas" />
+          <NavigationProperty Name="Grupos" Relationship="Self.FK_MaestroGrupos_Grupos" FromRole="MaestroGrupos" ToRole="Grupos" />
+          <NavigationProperty Name="Maestro" Relationship="Self.FK_MaestroGrupos_Maestros" FromRole="MaestroGrupos" ToRole="Maestros" />
+          <NavigationProperty Name="PeriodoEscolar" Relationship="Self.FK_MaestroGrupos_PeriodoEscolar" FromRole="MaestroGrupos" ToRole="PeriodoEscolar" />
+        </EntityType>
+        <EntityType Name="Maestro">
+          <Key>
+            <PropertyRef Name="IDMaestro" />
+          </Key>
+          <Property Name="IDMaestro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomMaestro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApePatMaestro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApeMatMaestro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TelMaestro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoMaestro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CedulaMaestro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IngresoMaestro" Type="DateTime" Precision="3" />
+          <Property Name="FotoMaestro" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FotoMaestroCredencial" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CurriculumMaestro" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDTipoMaestro" Type="Int32" />
+          <Property Name="GradoAcademicoMaestro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionMaestro" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDMunicipioMaestro" Type="Int32" />
+          <Property Name="StatusMaestro" Type="Byte" />
+          <Property Name="UsuarioMaestro" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContraseñaMaestro" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="Int32" />
+          <Property Name="UltimoGrado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Avisoes" Relationship="Self.FK_Aviso_Maestros" FromRole="Maestros" ToRole="Aviso" />
+          <NavigationProperty Name="DepartamentosEscuelas" Relationship="Self.FK_DepartamentosEscuela_Maestros" FromRole="Maestros" ToRole="DepartamentosEscuela" />
+          <NavigationProperty Name="MaestroGrupos" Relationship="Self.FK_MaestroGrupos_Maestros" FromRole="Maestros" ToRole="MaestroGrupos" />
+          <NavigationProperty Name="Municipio" Relationship="Self.FK_Maestros_Municipio" FromRole="Maestros" ToRole="Municipio" />
+          <NavigationProperty Name="TipoMaestro" Relationship="Self.FK_Maestros_TipoMaestro" FromRole="Maestros" ToRole="TipoMaestro" />
+        </EntityType>
+        <EntityType Name="Mensaje">
+          <Key>
+            <PropertyRef Name="IDMensaje" />
+          </Key>
+          <Property Name="IDMensaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDRemitente" Type="Int32" />
+          <Property Name="IDDestinatario" Type="Int32" />
+          <Property Name="Asunto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Mensaje1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ModalidadAsignatura">
+          <Key>
+            <PropertyRef Name="IDModalidadAsig" />
+          </Key>
+          <Property Name="IDModalidadAsig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Asignaturas" Relationship="Self.FK_Asignaturas_ModalidadAsignaturas" FromRole="ModalidadAsignaturas" ToRole="Asignaturas" />
+        </EntityType>
+        <EntityType Name="MomentoCalificacion">
+          <Key>
+            <PropertyRef Name="IDMomento" />
+          </Key>
+          <Property Name="IDMomento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Calificaciones" Relationship="Self.FK_Calificaciones_MomentoCalificacion" FromRole="MomentoCalificacion" ToRole="Calificaciones" />
+          <NavigationProperty Name="FechaCalificacions" Relationship="Self.FK_FechaCalificacion_FechaCalificacion" FromRole="MomentoCalificacion" ToRole="FechaCalificacion" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="IDMunicipio" />
+          </Key>
+          <Property Name="IDMunicipio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDEstado" Type="Int32" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK_Alumnos_Municipio" FromRole="Municipio" ToRole="Alumnos" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_Municipio_Estado" FromRole="Municipio" ToRole="Estado" />
+          <NavigationProperty Name="Maestros" Relationship="Self.FK_Maestros_Municipio" FromRole="Municipio" ToRole="Maestros" />
+        </EntityType>
+        <EntityType Name="Pai">
+          <Key>
+            <PropertyRef Name="IDPais" />
+          </Key>
+          <Property Name="IDPais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estadoes" Relationship="Self.FK_Estado_Pais" FromRole="Pais" ToRole="Estado" />
+        </EntityType>
+        <EntityType Name="PeriodoEscolar">
+          <Key>
+            <PropertyRef Name="IDPeriodo" />
+          </Key>
+          <Property Name="IDPeriodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="FechaFin" Type="DateTime" Precision="0" />
+          <Property Name="IDCicloEscolar" Type="Int32" />
+          <NavigationProperty Name="CicloEscolar" Relationship="Self.FK_PeriodoEscolar_CicloEscolar" FromRole="PeriodoEscolar" ToRole="CicloEscolar" />
+          <NavigationProperty Name="FechaCalificacions" Relationship="Self.FK_FechaCalificacion_PeriodoEscolar" FromRole="PeriodoEscolar" ToRole="FechaCalificacion" />
+          <NavigationProperty Name="Grupos" Relationship="Self.FK_Grupos_PeriodoEscolar" FromRole="PeriodoEscolar" ToRole="Grupos" />
+          <NavigationProperty Name="MaestroGrupos" Relationship="Self.FK_MaestroGrupos_PeriodoEscolar" FromRole="PeriodoEscolar" ToRole="MaestroGrupos" />
+          <NavigationProperty Name="SolicitudBajas" Relationship="Self.FK_SolicitudBaja_PeriodoEscolar" FromRole="PeriodoEscolar" ToRole="SolicitudBaja" />
+        </EntityType>
+        <EntityType Name="PlanesEstudio">
+          <Key>
+            <PropertyRef Name="IDPlanEstudios" />
+          </Key>
+          <Property Name="IDPlanEstudios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="Asignaturas" Relationship="Self.FK_Asignaturas_PlanesEstudio" FromRole="PlanesEstudio" ToRole="Asignaturas" />
+          <NavigationProperty Name="Grupos" Relationship="Self.FK_Grupos_PlanesEstudio" FromRole="PlanesEstudio" ToRole="Grupos" />
+        </EntityType>
+        <EntityType Name="Semestre">
+          <Key>
+            <PropertyRef Name="IDSemestre" />
+          </Key>
+          <Property Name="IDSemestre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK_Alumnos_Semestres" FromRole="Semestres" ToRole="Alumnos" />
+          <NavigationProperty Name="Asignaturas" Relationship="Self.FK_Asignaturas_Semestres" FromRole="Semestres" ToRole="Asignaturas" />
+          <NavigationProperty Name="Grupos" Relationship="Self.FK_Grupos_Semestres" FromRole="Semestres" ToRole="Grupos" />
+        </EntityType>
+        <EntityType Name="SolicitudBaja">
+          <Key>
+            <PropertyRef Name="IDSolicitud" />
+          </Key>
+          <Property Name="IDSolicitud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoBaja" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDAlumno" Type="Int32" />
+          <Property Name="NoOficio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDPeriodo" Type="Int32" />
+          <Property Name="FechaBaja" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Alumno" Relationship="Self.FK_SolicitudBaja_Alumnos" FromRole="SolicitudBaja" ToRole="Alumnos" />
+          <NavigationProperty Name="PeriodoEscolar" Relationship="Self.FK_SolicitudBaja_PeriodoEscolar" FromRole="SolicitudBaja" ToRole="PeriodoEscolar" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TipoAlumno">
+          <Key>
+            <PropertyRef Name="IDTIpoAlumno" />
+          </Key>
+          <Property Name="IDTIpoAlumno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK_Alumnos_TipoAlumno" FromRole="TipoAlumno" ToRole="Alumnos" />
+        </EntityType>
+        <EntityType Name="TipoAsignatura">
+          <Key>
+            <PropertyRef Name="IDTipoAsig" />
+          </Key>
+          <Property Name="IDTipoAsig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Asignaturas" Relationship="Self.FK_Asignaturas_TipoAsignaturas" FromRole="TipoAsignaturas" ToRole="Asignaturas" />
+        </EntityType>
+        <EntityType Name="TipoMaestro">
+          <Key>
+            <PropertyRef Name="IDTipoMaestro" />
+          </Key>
+          <Property Name="IDTipoMaestro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Directivo" Type="Byte" />
+          <Property Name="SecreAdmin" Type="Byte" />
+          <Property Name="SecreAcade" Type="Byte" />
+          <Property Name="ControlEsc" Type="Byte" />
+          <Property Name="Docente" Type="Byte" />
+          <NavigationProperty Name="Maestros" Relationship="Self.FK_Maestros_TipoMaestro" FromRole="TipoMaestro" ToRole="Maestros" />
+        </EntityType>
+        <EntityType Name="TurnosEscuela">
+          <Key>
+            <PropertyRef Name="IDTurno" />
+          </Key>
+          <Property Name="IDTurno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK_Alumnos_TurnosEscuelas" FromRole="TurnosEscuelas" ToRole="Alumnos" />
+        </EntityType>
+        <EntityType Name="CalificacionesAlumno">
+          <Key>
+            <PropertyRef Name="IDCalificacionAlum" />
+          </Key>
+          <Property Name="IDCalificacionAlum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDAlumno" Type="Int32" />
+          <Property Name="IDAsignatura" Type="Int32" />
+          <Property Name="IDMomento" Type="Int32" />
+          <Property Name="Calificacion" Type="Int32" />
+          <Property Name="IDGrupo" Type="Int32" />
+          <Property Name="Inasistencias" Type="Int32" />
+          <Property Name="FechaCaptura" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK_Alumnos_DocumentosAlumno">
+          <End Role="DocumentosAlumno" Type="Self.DocumentosAlumno" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentosAlumno">
+              <PropertyRef Name="IDDocumentos" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDDocumentosAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumnos_EscuelasProcedenciaAlumnos">
+          <End Role="EscuelasProcedenciaAlumnos" Type="Self.EscuelasProcedenciaAlumno" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EscuelasProcedenciaAlumnos">
+              <PropertyRef Name="IDEscProAlumno" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDEscProAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumnos_Grupos">
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupos">
+              <PropertyRef Name="IDGrupo" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumnos_Municipio">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="IDMunicipio" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDMunicipioAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumnos_Semestres">
+          <End Role="Semestres" Type="Self.Semestre" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semestres">
+              <PropertyRef Name="IDSemestre" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDSemestrePreinscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumnos_TipoAlumno">
+          <End Role="TipoAlumno" Type="Self.TipoAlumno" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAlumno">
+              <PropertyRef Name="IDTIpoAlumno" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDTipoAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumnos_TurnosEscuelas">
+          <End Role="TurnosEscuelas" Type="Self.TurnosEscuela" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TurnosEscuelas">
+              <PropertyRef Name="IDTurno" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="IDTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aviso_Alumnos">
+          <End Role="Alumnos" Type="Self.Alumno" Multiplicity="0..1" />
+          <End Role="Aviso" Type="Self.Aviso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="IDAlumno" />
+            </Principal>
+            <Dependent Role="Aviso">
+              <PropertyRef Name="IDAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificaciones_Alumnos">
+          <End Role="Alumnos" Type="Self.Alumno" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="IDAlumno" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IDAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SolicitudBaja_Alumnos">
+          <End Role="Alumnos" Type="Self.Alumno" Multiplicity="0..1" />
+          <End Role="SolicitudBaja" Type="Self.SolicitudBaja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="IDAlumno" />
+            </Principal>
+            <Dependent Role="SolicitudBaja">
+              <PropertyRef Name="IDAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asignaturas_ModalidadAsignaturas">
+          <End Role="ModalidadAsignaturas" Type="Self.ModalidadAsignatura" Multiplicity="0..1" />
+          <End Role="Asignaturas" Type="Self.Asignatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModalidadAsignaturas">
+              <PropertyRef Name="IDModalidadAsig" />
+            </Principal>
+            <Dependent Role="Asignaturas">
+              <PropertyRef Name="IDModalidadAsig" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asignaturas_PlanesEstudio">
+          <End Role="PlanesEstudio" Type="Self.PlanesEstudio" Multiplicity="0..1" />
+          <End Role="Asignaturas" Type="Self.Asignatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanesEstudio">
+              <PropertyRef Name="IDPlanEstudios" />
+            </Principal>
+            <Dependent Role="Asignaturas">
+              <PropertyRef Name="IDPlanEstudios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asignaturas_Semestres">
+          <End Role="Semestres" Type="Self.Semestre" Multiplicity="0..1" />
+          <End Role="Asignaturas" Type="Self.Asignatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semestres">
+              <PropertyRef Name="IDSemestre" />
+            </Principal>
+            <Dependent Role="Asignaturas">
+              <PropertyRef Name="IDSemestreAsig" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asignaturas_TipoAsignaturas">
+          <End Role="TipoAsignaturas" Type="Self.TipoAsignatura" Multiplicity="0..1" />
+          <End Role="Asignaturas" Type="Self.Asignatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAsignaturas">
+              <PropertyRef Name="IDTipoAsig" />
+            </Principal>
+            <Dependent Role="Asignaturas">
+              <PropertyRef Name="IDTipoAsig" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificaciones_Asignaturas">
+          <End Role="Asignaturas" Type="Self.Asignatura" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asignaturas">
+              <PropertyRef Name="IDAsignatura" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IDAsignatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupoAsignatura_Asignaturas">
+          <End Role="Asignaturas" Type="Self.Asignatura" Multiplicity="0..1" />
+          <End Role="GrupoAsignatura" Type="Self.GrupoAsignatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asignaturas">
+              <PropertyRef Name="IDAsignatura" />
+            </Principal>
+            <Dependent Role="GrupoAsignatura">
+              <PropertyRef Name="IDAsignatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroGrupos_Asignaturas">
+          <End Role="Asignaturas" Type="Self.Asignatura" Multiplicity="0..1" />
+          <End Role="MaestroGrupos" Type="Self.MaestroGrupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asignaturas">
+              <PropertyRef Name="IDAsignatura" />
+            </Principal>
+            <Dependent Role="MaestroGrupos">
+              <PropertyRef Name="IDAsignatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aviso_Maestros">
+          <End Role="Maestros" Type="Self.Maestro" Multiplicity="0..1" />
+          <End Role="Aviso" Type="Self.Aviso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maestros">
+              <PropertyRef Name="IDMaestro" />
+            </Principal>
+            <Dependent Role="Aviso">
+              <PropertyRef Name="IDMaestro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificaciones_Grupos">
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupos">
+              <PropertyRef Name="IDGrupo" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IDGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificaciones_MomentoCalificacion">
+          <End Role="MomentoCalificacion" Type="Self.MomentoCalificacion" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MomentoCalificacion">
+              <PropertyRef Name="IDMomento" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IDMomento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PeriodoEscolar_CicloEscolar">
+          <End Role="CicloEscolar" Type="Self.CicloEscolar" Multiplicity="0..1" />
+          <End Role="PeriodoEscolar" Type="Self.PeriodoEscolar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CicloEscolar">
+              <PropertyRef Name="IDCicloEscolar" />
+            </Principal>
+            <Dependent Role="PeriodoEscolar">
+              <PropertyRef Name="IDCicloEscolar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DepartamentosEscuela_DatosEscuela">
+          <End Role="DatosEscuela" Type="Self.DatosEscuela" Multiplicity="0..1" />
+          <End Role="DepartamentosEscuela" Type="Self.DepartamentosEscuela" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatosEscuela">
+              <PropertyRef Name="IDEscuela" />
+            </Principal>
+            <Dependent Role="DepartamentosEscuela">
+              <PropertyRef Name="IDEscuela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DepartamentosEscuela_Maestros">
+          <End Role="Maestros" Type="Self.Maestro" Multiplicity="0..1" />
+          <End Role="DepartamentosEscuela" Type="Self.DepartamentosEscuela" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maestros">
+              <PropertyRef Name="IDMaestro" />
+            </Principal>
+            <Dependent Role="DepartamentosEscuela">
+              <PropertyRef Name="IDEncargado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_Pais">
+          <End Role="Pais" Type="Self.Pai" Multiplicity="1" />
+          <End Role="Estado" Type="Self.Estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="IDPais" />
+            </Principal>
+            <Dependent Role="Estado">
+              <PropertyRef Name="IDPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Municipio_Estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IDEstado" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="IDEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FechaCalificacion_FechaCalificacion">
+          <End Role="MomentoCalificacion" Type="Self.MomentoCalificacion" Multiplicity="0..1" />
+          <End Role="FechaCalificacion" Type="Self.FechaCalificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MomentoCalificacion">
+              <PropertyRef Name="IDMomento" />
+            </Principal>
+            <Dependent Role="FechaCalificacion">
+              <PropertyRef Name="IDMomento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FechaCalificacion_PeriodoEscolar">
+          <End Role="PeriodoEscolar" Type="Self.PeriodoEscolar" Multiplicity="0..1" />
+          <End Role="FechaCalificacion" Type="Self.FechaCalificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PeriodoEscolar">
+              <PropertyRef Name="IDPeriodo" />
+            </Principal>
+            <Dependent Role="FechaCalificacion">
+              <PropertyRef Name="IDPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupoAsignatura_Grupos">
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="0..1" />
+          <End Role="GrupoAsignatura" Type="Self.GrupoAsignatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupos">
+              <PropertyRef Name="IDGrupo" />
+            </Principal>
+            <Dependent Role="GrupoAsignatura">
+              <PropertyRef Name="IDGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupos_PeriodoEscolar">
+          <End Role="PeriodoEscolar" Type="Self.PeriodoEscolar" Multiplicity="0..1" />
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PeriodoEscolar">
+              <PropertyRef Name="IDPeriodo" />
+            </Principal>
+            <Dependent Role="Grupos">
+              <PropertyRef Name="IDPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupos_PlanesEstudio">
+          <End Role="PlanesEstudio" Type="Self.PlanesEstudio" Multiplicity="0..1" />
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanesEstudio">
+              <PropertyRef Name="IDPlanEstudios" />
+            </Principal>
+            <Dependent Role="Grupos">
+              <PropertyRef Name="IDPlanEstudio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupos_Semestres">
+          <End Role="Semestres" Type="Self.Semestre" Multiplicity="0..1" />
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semestres">
+              <PropertyRef Name="IDSemestre" />
+            </Principal>
+            <Dependent Role="Grupos">
+              <PropertyRef Name="IDSemestre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroGrupos_Grupos">
+          <End Role="Grupos" Type="Self.Grupos" Multiplicity="0..1" />
+          <End Role="MaestroGrupos" Type="Self.MaestroGrupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupos">
+              <PropertyRef Name="IDGrupo" />
+            </Principal>
+            <Dependent Role="MaestroGrupos">
+              <PropertyRef Name="IDGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroGrupos_Maestros">
+          <End Role="Maestros" Type="Self.Maestro" Multiplicity="0..1" />
+          <End Role="MaestroGrupos" Type="Self.MaestroGrupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maestros">
+              <PropertyRef Name="IDMaestro" />
+            </Principal>
+            <Dependent Role="MaestroGrupos">
+              <PropertyRef Name="IDMaestro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroGrupos_PeriodoEscolar">
+          <End Role="PeriodoEscolar" Type="Self.PeriodoEscolar" Multiplicity="0..1" />
+          <End Role="MaestroGrupos" Type="Self.MaestroGrupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PeriodoEscolar">
+              <PropertyRef Name="IDPeriodo" />
+            </Principal>
+            <Dependent Role="MaestroGrupos">
+              <PropertyRef Name="IDPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maestros_Municipio">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="0..1" />
+          <End Role="Maestros" Type="Self.Maestro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="IDMunicipio" />
+            </Principal>
+            <Dependent Role="Maestros">
+              <PropertyRef Name="IDMunicipioMaestro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maestros_TipoMaestro">
+          <End Role="TipoMaestro" Type="Self.TipoMaestro" Multiplicity="0..1" />
+          <End Role="Maestros" Type="Self.Maestro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMaestro">
+              <PropertyRef Name="IDTipoMaestro" />
+            </Principal>
+            <Dependent Role="Maestros">
+              <PropertyRef Name="IDTipoMaestro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SolicitudBaja_PeriodoEscolar">
+          <End Role="PeriodoEscolar" Type="Self.PeriodoEscolar" Multiplicity="0..1" />
+          <End Role="SolicitudBaja" Type="Self.SolicitudBaja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PeriodoEscolar">
+              <PropertyRef Name="IDPeriodo" />
+            </Principal>
+            <Dependent Role="SolicitudBaja">
+              <PropertyRef Name="IDPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="siedEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alumnos" EntityType="Self.Alumno" />
+          <EntitySet Name="Asignaturas" EntityType="Self.Asignatura" />
+          <EntitySet Name="Avisoes" EntityType="Self.Aviso" />
+          <EntitySet Name="AvisosPadres" EntityType="Self.AvisosPadre" />
+          <EntitySet Name="Calificaciones" EntityType="Self.Calificacione" />
+          <EntitySet Name="CategoriaPreguntas" EntityType="Self.CategoriaPregunta" />
+          <EntitySet Name="CicloEscolars" EntityType="Self.CicloEscolar" />
+          <EntitySet Name="DatosEscuelas" EntityType="Self.DatosEscuela" />
+          <EntitySet Name="DepartamentosEscuelas" EntityType="Self.DepartamentosEscuela" />
+          <EntitySet Name="DocumentosAlumnoes" EntityType="Self.DocumentosAlumno" />
+          <EntitySet Name="EscuelasProcedenciaAlumnos" EntityType="Self.EscuelasProcedenciaAlumno" />
+          <EntitySet Name="Estadoes" EntityType="Self.Estado" />
+          <EntitySet Name="FechaCalificacions" EntityType="Self.FechaCalificacion" />
+          <EntitySet Name="GrupoAsignaturas" EntityType="Self.GrupoAsignatura" />
+          <EntitySet Name="Grupos" EntityType="Self.Grupos" />
+          <EntitySet Name="MaestroGrupos" EntityType="Self.MaestroGrupos" />
+          <EntitySet Name="Maestros" EntityType="Self.Maestro" />
+          <EntitySet Name="Mensajes" EntityType="Self.Mensaje" />
+          <EntitySet Name="ModalidadAsignaturas" EntityType="Self.ModalidadAsignatura" />
+          <EntitySet Name="MomentoCalificacions" EntityType="Self.MomentoCalificacion" />
+          <EntitySet Name="Municipios" EntityType="Self.Municipio" />
+          <EntitySet Name="Pais" EntityType="Self.Pai" />
+          <EntitySet Name="PeriodoEscolars" EntityType="Self.PeriodoEscolar" />
+          <EntitySet Name="PlanesEstudios" EntityType="Self.PlanesEstudio" />
+          <EntitySet Name="Semestres" EntityType="Self.Semestre" />
+          <EntitySet Name="SolicitudBajas" EntityType="Self.SolicitudBaja" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TipoAlumnoes" EntityType="Self.TipoAlumno" />
+          <EntitySet Name="TipoAsignaturas" EntityType="Self.TipoAsignatura" />
+          <EntitySet Name="TipoMaestroes" EntityType="Self.TipoMaestro" />
+          <EntitySet Name="TurnosEscuelas" EntityType="Self.TurnosEscuela" />
+          <EntitySet Name="CalificacionesAlumnoes" EntityType="Self.CalificacionesAlumno" />
+          <AssociationSet Name="FK_Alumnos_DocumentosAlumno" Association="Self.FK_Alumnos_DocumentosAlumno">
+            <End Role="DocumentosAlumno" EntitySet="DocumentosAlumnoes" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumnos_EscuelasProcedenciaAlumnos" Association="Self.FK_Alumnos_EscuelasProcedenciaAlumnos">
+            <End Role="EscuelasProcedenciaAlumnos" EntitySet="EscuelasProcedenciaAlumnos" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumnos_Grupos" Association="Self.FK_Alumnos_Grupos">
+            <End Role="Grupos" EntitySet="Grupos" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumnos_Municipio" Association="Self.FK_Alumnos_Municipio">
+            <End Role="Municipio" EntitySet="Municipios" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumnos_Semestres" Association="Self.FK_Alumnos_Semestres">
+            <End Role="Semestres" EntitySet="Semestres" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumnos_TipoAlumno" Association="Self.FK_Alumnos_TipoAlumno">
+            <End Role="TipoAlumno" EntitySet="TipoAlumnoes" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumnos_TurnosEscuelas" Association="Self.FK_Alumnos_TurnosEscuelas">
+            <End Role="TurnosEscuelas" EntitySet="TurnosEscuelas" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aviso_Alumnos" Association="Self.FK_Aviso_Alumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="Aviso" EntitySet="Avisoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificaciones_Alumnos" Association="Self.FK_Calificaciones_Alumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SolicitudBaja_Alumnos" Association="Self.FK_SolicitudBaja_Alumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="SolicitudBaja" EntitySet="SolicitudBajas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asignaturas_ModalidadAsignaturas" Association="Self.FK_Asignaturas_ModalidadAsignaturas">
+            <End Role="ModalidadAsignaturas" EntitySet="ModalidadAsignaturas" />
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asignaturas_PlanesEstudio" Association="Self.FK_Asignaturas_PlanesEstudio">
+            <End Role="PlanesEstudio" EntitySet="PlanesEstudios" />
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asignaturas_Semestres" Association="Self.FK_Asignaturas_Semestres">
+            <End Role="Semestres" EntitySet="Semestres" />
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asignaturas_TipoAsignaturas" Association="Self.FK_Asignaturas_TipoAsignaturas">
+            <End Role="TipoAsignaturas" EntitySet="TipoAsignaturas" />
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificaciones_Asignaturas" Association="Self.FK_Calificaciones_Asignaturas">
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupoAsignatura_Asignaturas" Association="Self.FK_GrupoAsignatura_Asignaturas">
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+            <End Role="GrupoAsignatura" EntitySet="GrupoAsignaturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroGrupos_Asignaturas" Association="Self.FK_MaestroGrupos_Asignaturas">
+            <End Role="Asignaturas" EntitySet="Asignaturas" />
+            <End Role="MaestroGrupos" EntitySet="MaestroGrupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aviso_Maestros" Association="Self.FK_Aviso_Maestros">
+            <End Role="Maestros" EntitySet="Maestros" />
+            <End Role="Aviso" EntitySet="Avisoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificaciones_Grupos" Association="Self.FK_Calificaciones_Grupos">
+            <End Role="Grupos" EntitySet="Grupos" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificaciones_MomentoCalificacion" Association="Self.FK_Calificaciones_MomentoCalificacion">
+            <End Role="MomentoCalificacion" EntitySet="MomentoCalificacions" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PeriodoEscolar_CicloEscolar" Association="Self.FK_PeriodoEscolar_CicloEscolar">
+            <End Role="CicloEscolar" EntitySet="CicloEscolars" />
+            <End Role="PeriodoEscolar" EntitySet="PeriodoEscolars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DepartamentosEscuela_DatosEscuela" Association="Self.FK_DepartamentosEscuela_DatosEscuela">
+            <End Role="DatosEscuela" EntitySet="DatosEscuelas" />
+            <End Role="DepartamentosEscuela" EntitySet="DepartamentosEscuelas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DepartamentosEscuela_Maestros" Association="Self.FK_DepartamentosEscuela_Maestros">
+            <End Role="Maestros" EntitySet="Maestros" />
+            <End Role="DepartamentosEscuela" EntitySet="DepartamentosEscuelas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_Pais" Association="Self.FK_Estado_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Estado" EntitySet="Estadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Municipio_Estado" Association="Self.FK_Municipio_Estado">
+            <End Role="Estado" EntitySet="Estadoes" />
+            <End Role="Municipio" EntitySet="Municipios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FechaCalificacion_FechaCalificacion" Association="Self.FK_FechaCalificacion_FechaCalificacion">
+            <End Role="MomentoCalificacion" EntitySet="MomentoCalificacions" />
+            <End Role="FechaCalificacion" EntitySet="FechaCalificacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FechaCalificacion_PeriodoEscolar" Association="Self.FK_FechaCalificacion_PeriodoEscolar">
+            <End Role="PeriodoEscolar" EntitySet="PeriodoEscolars" />
+            <End Role="FechaCalificacion" EntitySet="FechaCalificacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupoAsignatura_Grupos" Association="Self.FK_GrupoAsignatura_Grupos">
+            <End Role="Grupos" EntitySet="Grupos" />
+            <End Role="GrupoAsignatura" EntitySet="GrupoAsignaturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupos_PeriodoEscolar" Association="Self.FK_Grupos_PeriodoEscolar">
+            <End Role="PeriodoEscolar" EntitySet="PeriodoEscolars" />
+            <End Role="Grupos" EntitySet="Grupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupos_PlanesEstudio" Association="Self.FK_Grupos_PlanesEstudio">
+            <End Role="PlanesEstudio" EntitySet="PlanesEstudios" />
+            <End Role="Grupos" EntitySet="Grupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupos_Semestres" Association="Self.FK_Grupos_Semestres">
+            <End Role="Semestres" EntitySet="Semestres" />
+            <End Role="Grupos" EntitySet="Grupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroGrupos_Grupos" Association="Self.FK_MaestroGrupos_Grupos">
+            <End Role="Grupos" EntitySet="Grupos" />
+            <End Role="MaestroGrupos" EntitySet="MaestroGrupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroGrupos_Maestros" Association="Self.FK_MaestroGrupos_Maestros">
+            <End Role="Maestros" EntitySet="Maestros" />
+            <End Role="MaestroGrupos" EntitySet="MaestroGrupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroGrupos_PeriodoEscolar" Association="Self.FK_MaestroGrupos_PeriodoEscolar">
+            <End Role="PeriodoEscolar" EntitySet="PeriodoEscolars" />
+            <End Role="MaestroGrupos" EntitySet="MaestroGrupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maestros_Municipio" Association="Self.FK_Maestros_Municipio">
+            <End Role="Municipio" EntitySet="Municipios" />
+            <End Role="Maestros" EntitySet="Maestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maestros_TipoMaestro" Association="Self.FK_Maestros_TipoMaestro">
+            <End Role="TipoMaestro" EntitySet="TipoMaestroes" />
+            <End Role="Maestros" EntitySet="Maestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SolicitudBaja_PeriodoEscolar" Association="Self.FK_SolicitudBaja_PeriodoEscolar">
+            <End Role="PeriodoEscolar" EntitySet="PeriodoEscolars" />
+            <End Role="SolicitudBaja" EntitySet="SolicitudBajas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="siedModelStoreContainer" CdmEntityContainer="siedEntities">
+          <EntitySetMapping Name="Alumnos">
+            <EntityTypeMapping TypeName="siedModel.Alumno">
+              <MappingFragment StoreEntitySet="Alumnos">
+                <ScalarProperty Name="IDAlumno" ColumnName="IDAlumno" />
+                <ScalarProperty Name="NomAlumno" ColumnName="NomAlumno" />
+                <ScalarProperty Name="ApePatAlumno" ColumnName="ApePatAlumno" />
+                <ScalarProperty Name="ApeMatAlumno" ColumnName="ApeMatAlumno" />
+                <ScalarProperty Name="TelAlumno" ColumnName="TelAlumno" />
+                <ScalarProperty Name="IngresoAlumno" ColumnName="IngresoAlumno" />
+                <ScalarProperty Name="IDTipoAlumno" ColumnName="IDTipoAlumno" />
+                <ScalarProperty Name="FotoAlumno" ColumnName="FotoAlumno" />
+                <ScalarProperty Name="FotoAlumnoCredencial" ColumnName="FotoAlumnoCredencial" />
+                <ScalarProperty Name="CalleAlumno" ColumnName="CalleAlumno" />
+                <ScalarProperty Name="NumeroAlumno" ColumnName="NumeroAlumno" />
+                <ScalarProperty Name="ColoniaAlumno" ColumnName="ColoniaAlumno" />
+                <ScalarProperty Name="CodigoPostalAlumno" ColumnName="CodigoPostalAlumno" />
+                <ScalarProperty Name="IDMunicipioAlumno" ColumnName="IDMunicipioAlumno" />
+                <ScalarProperty Name="NomPadreAlumno" ColumnName="NomPadreAlumno" />
+                <ScalarProperty Name="TelPadreAlumno" ColumnName="TelPadreAlumno" />
+                <ScalarProperty Name="NomMadreAlumno" ColumnName="NomMadreAlumno" />
+                <ScalarProperty Name="TelMadreAlumno" ColumnName="TelMadreAlumno" />
+                <ScalarProperty Name="NomTutorAlumno" ColumnName="NomTutorAlumno" />
+                <ScalarProperty Name="TelTutorAlumno" ColumnName="TelTutorAlumno" />
+                <ScalarProperty Name="IDDocumentosAlumno" ColumnName="IDDocumentosAlumno" />
+                <ScalarProperty Name="IDEscProAlumno" ColumnName="IDEscProAlumno" />
+                <ScalarProperty Name="RevalidaAlumno" ColumnName="RevalidaAlumno" />
+                <ScalarProperty Name="NuevoAlumno" ColumnName="NuevoAlumno" />
+                <ScalarProperty Name="FechaNacAlumno" ColumnName="FechaNacAlumno" />
+                <ScalarProperty Name="FechaBaja" ColumnName="FechaBaja" />
+                <ScalarProperty Name="CurpAlumno" ColumnName="CurpAlumno" />
+                <ScalarProperty Name="UsuarioAlumno" ColumnName="UsuarioAlumno" />
+                <ScalarProperty Name="ContraseñaAlumno" ColumnName="ContraseñaAlumno" />
+                <ScalarProperty Name="IDGrupo" ColumnName="IDGrupo" />
+                <ScalarProperty Name="IDTurno" ColumnName="IDTurno" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="IDSemestrePreinscripcion" ColumnName="IDSemestrePreinscripcion" />
+                <ScalarProperty Name="FotoTabla" ColumnName="FotoTabla" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asignaturas">
+            <EntityTypeMapping TypeName="siedModel.Asignatura">
+              <MappingFragment StoreEntitySet="Asignaturas">
+                <ScalarProperty Name="IDAsignatura" ColumnName="IDAsignatura" />
+                <ScalarProperty Name="NomAsig" ColumnName="NomAsig" />
+                <ScalarProperty Name="AbrevAsig" ColumnName="AbrevAsig" />
+                <ScalarProperty Name="IDSemestreAsig" ColumnName="IDSemestreAsig" />
+                <ScalarProperty Name="IDTipoAsig" ColumnName="IDTipoAsig" />
+                <ScalarProperty Name="IDModalidadAsig" ColumnName="IDModalidadAsig" />
+                <ScalarProperty Name="IDPlanEstudios" ColumnName="IDPlanEstudios" />
+                <ScalarProperty Name="CreditosAsig" ColumnName="CreditosAsig" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RequisitosAsig" ColumnName="RequisitosAsig" />
+                <ScalarProperty Name="HorasPre" ColumnName="HorasPre" />
+                <ScalarProperty Name="HorasNoPre" ColumnName="HorasNoPre" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="Proceso" ColumnName="Proceso" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Avisoes">
+            <EntityTypeMapping TypeName="siedModel.Aviso">
+              <MappingFragment StoreEntitySet="Aviso">
+                <ScalarProperty Name="IDAviso" ColumnName="IDAviso" />
+                <ScalarProperty Name="IDMaestro" ColumnName="IDMaestro" />
+                <ScalarProperty Name="IDAlumno" ColumnName="IDAlumno" />
+                <ScalarProperty Name="TextoAviso" ColumnName="TextoAviso" />
+                <ScalarProperty Name="EstadoAviso" ColumnName="EstadoAviso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AvisosPadres">
+            <EntityTypeMapping TypeName="siedModel.AvisosPadre">
+              <MappingFragment StoreEntitySet="AvisosPadres">
+                <ScalarProperty Name="IDAviso" ColumnName="IDAviso" />
+                <ScalarProperty Name="TextoAviso" ColumnName="TextoAviso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calificaciones">
+            <EntityTypeMapping TypeName="siedModel.Calificacione">
+              <MappingFragment StoreEntitySet="Calificaciones">
+                <ScalarProperty Name="IDCalificacion" ColumnName="IDCalificacion" />
+                <ScalarProperty Name="IDAlumno" ColumnName="IDAlumno" />
+                <ScalarProperty Name="IDAsignatura" ColumnName="IDAsignatura" />
+                <ScalarProperty Name="IDMomento" ColumnName="IDMomento" />
+                <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+                <ScalarProperty Name="IDGrupo" ColumnName="IDGrupo" />
+                <ScalarProperty Name="Inasistencias" ColumnName="Inasistencias" />
+                <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoriaPreguntas">
+            <EntityTypeMapping TypeName="siedModel.CategoriaPregunta">
+              <MappingFragment StoreEntitySet="CategoriaPregunta">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CicloEscolars">
+            <EntityTypeMapping TypeName="siedModel.CicloEscolar">
+              <MappingFragment StoreEntitySet="CicloEscolar">
+                <ScalarProperty Name="IDCicloEscolar" ColumnName="IDCicloEscolar" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FechaInicioDocs" ColumnName="FechaInicioDocs" />
+                <ScalarProperty Name="FechaFinDocs" ColumnName="FechaFinDocs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatosEscuelas">
+            <EntityTypeMapping TypeName="siedModel.DatosEscuela">
+              <MappingFragment StoreEntitySet="DatosEscuela">
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="NombreEsc" ColumnName="NombreEsc" />
+                <ScalarProperty Name="ClaveEsc" ColumnName="ClaveEsc" />
+                <ScalarProperty Name="CalleEsc" ColumnName="CalleEsc" />
+                <ScalarProperty Name="NumeroEsc" ColumnName="NumeroEsc" />
+                <ScalarProperty Name="ColoniaEsc" ColumnName="ColoniaEsc" />
+                <ScalarProperty Name="CodigoPostalEsc" ColumnName="CodigoPostalEsc" />
+                <ScalarProperty Name="IDMunicipio" ColumnName="IDMunicipio" />
+                <ScalarProperty Name="TelEscuela" ColumnName="TelEscuela" />
+                <ScalarProperty Name="EmailEsc" ColumnName="EmailEsc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartamentosEscuelas">
+            <EntityTypeMapping TypeName="siedModel.DepartamentosEscuela">
+              <MappingFragment StoreEntitySet="DepartamentosEscuela">
+                <ScalarProperty Name="IDDepartamentos" ColumnName="IDDepartamentos" />
+                <ScalarProperty Name="NombreDep" ColumnName="NombreDep" />
+                <ScalarProperty Name="IDEncargado" ColumnName="IDEncargado" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="StatusDep" ColumnName="StatusDep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentosAlumnoes">
+            <EntityTypeMapping TypeName="siedModel.DocumentosAlumno">
+              <MappingFragment StoreEntitySet="DocumentosAlumno">
+                <ScalarProperty Name="IDDocumentos" ColumnName="IDDocumentos" />
+                <ScalarProperty Name="ActaNacimiento" ColumnName="ActaNacimiento" />
+                <ScalarProperty Name="Fotografias" ColumnName="Fotografias" />
+                <ScalarProperty Name="Curp" ColumnName="Curp" />
+                <ScalarProperty Name="Constancia" ColumnName="Constancia" />
+                <ScalarProperty Name="ComprobanteDomiciliario" ColumnName="ComprobanteDomiciliario" />
+                <ScalarProperty Name="BoletaCalificaciones" ColumnName="BoletaCalificaciones" />
+                <ScalarProperty Name="CertificadoParcial" ColumnName="CertificadoParcial" />
+                <ScalarProperty Name="OficioRevalidacion" ColumnName="OficioRevalidacion" />
+                <ScalarProperty Name="ConstanciaMedia" ColumnName="ConstanciaMedia" />
+                <ScalarProperty Name="CertificadoSecundaria" ColumnName="CertificadoSecundaria" />
+                <ScalarProperty Name="Otros" ColumnName="Otros" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EscuelasProcedenciaAlumnos">
+            <EntityTypeMapping TypeName="siedModel.EscuelasProcedenciaAlumno">
+              <MappingFragment StoreEntitySet="EscuelasProcedenciaAlumnos">
+                <ScalarProperty Name="IDEscProAlumno" ColumnName="IDEscProAlumno" />
+                <ScalarProperty Name="NombreEscPro" ColumnName="NombreEscPro" />
+                <ScalarProperty Name="ClaveEscPro" ColumnName="ClaveEscPro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estadoes">
+            <EntityTypeMapping TypeName="siedModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="IDEstado" ColumnName="IDEstado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IDPais" ColumnName="IDPais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FechaCalificacions">
+            <EntityTypeMapping TypeName="siedModel.FechaCalificacion">
+              <MappingFragment StoreEntitySet="FechaCalificacion">
+                <ScalarProperty Name="IDFechaCalif" ColumnName="IDFechaCalif" />
+                <ScalarProperty Name="IDPeriodo" ColumnName="IDPeriodo" />
+                <ScalarProperty Name="IDMomento" ColumnName="IDMomento" />
+                <ScalarProperty Name="FechaInicioCalif" ColumnName="FechaInicioCalif" />
+                <ScalarProperty Name="FechaFinCalif" ColumnName="FechaFinCalif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GrupoAsignaturas">
+            <EntityTypeMapping TypeName="siedModel.GrupoAsignatura">
+              <MappingFragment StoreEntitySet="GrupoAsignatura">
+                <ScalarProperty Name="IDGrupoAsig" ColumnName="IDGrupoAsig" />
+                <ScalarProperty Name="IDGrupo" ColumnName="IDGrupo" />
+                <ScalarProperty Name="IDAsignatura" ColumnName="IDAsignatura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grupos">
+            <EntityTypeMapping TypeName="siedModel.Grupos">
+              <MappingFragment StoreEntitySet="Grupos">
+                <ScalarProperty Name="IDGrupo" ColumnName="IDGrupo" />
+                <ScalarProperty Name="NombreGrupo" ColumnName="NombreGrupo" />
+                <ScalarProperty Name="IDPeriodo" ColumnName="IDPeriodo" />
+                <ScalarProperty Name="IDPlanEstudio" ColumnName="IDPlanEstudio" />
+                <ScalarProperty Name="IDSemestre" ColumnName="IDSemestre" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaestroGrupos">
+            <EntityTypeMapping TypeName="siedModel.MaestroGrupos">
+              <MappingFragment StoreEntitySet="MaestroGrupos">
+                <ScalarProperty Name="IDMaestroGrupo" ColumnName="IDMaestroGrupo" />
+                <ScalarProperty Name="IDMaestro" ColumnName="IDMaestro" />
+                <ScalarProperty Name="IDGrupo" ColumnName="IDGrupo" />
+                <ScalarProperty Name="IDAsignatura" ColumnName="IDAsignatura" />
+                <ScalarProperty Name="IDPeriodo" ColumnName="IDPeriodo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maestros">
+            <EntityTypeMapping TypeName="siedModel.Maestro">
+              <MappingFragment StoreEntitySet="Maestros">
+                <ScalarProperty Name="IDMaestro" ColumnName="IDMaestro" />
+                <ScalarProperty Name="NomMaestro" ColumnName="NomMaestro" />
+                <ScalarProperty Name="ApePatMaestro" ColumnName="ApePatMaestro" />
+                <ScalarProperty Name="ApeMatMaestro" ColumnName="ApeMatMaestro" />
+                <ScalarProperty Name="TelMaestro" ColumnName="TelMaestro" />
+                <ScalarProperty Name="CorreoMaestro" ColumnName="CorreoMaestro" />
+                <ScalarProperty Name="CedulaMaestro" ColumnName="CedulaMaestro" />
+                <ScalarProperty Name="IngresoMaestro" ColumnName="IngresoMaestro" />
+                <ScalarProperty Name="FotoMaestro" ColumnName="FotoMaestro" />
+                <ScalarProperty Name="FotoMaestroCredencial" ColumnName="FotoMaestroCredencial" />
+                <ScalarProperty Name="CurriculumMaestro" ColumnName="CurriculumMaestro" />
+                <ScalarProperty Name="IDTipoMaestro" ColumnName="IDTipoMaestro" />
+                <ScalarProperty Name="GradoAcademicoMaestro" ColumnName="GradoAcademicoMaestro" />
+                <ScalarProperty Name="DireccionMaestro" ColumnName="DireccionMaestro" />
+                <ScalarProperty Name="IDMunicipioMaestro" ColumnName="IDMunicipioMaestro" />
+                <ScalarProperty Name="StatusMaestro" ColumnName="StatusMaestro" />
+                <ScalarProperty Name="UsuarioMaestro" ColumnName="UsuarioMaestro" />
+                <ScalarProperty Name="ContraseñaMaestro" ColumnName="ContraseñaMaestro" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="UltimoGrado" ColumnName="UltimoGrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mensajes">
+            <EntityTypeMapping TypeName="siedModel.Mensaje">
+              <MappingFragment StoreEntitySet="Mensajes">
+                <ScalarProperty Name="IDMensaje" ColumnName="IDMensaje" />
+                <ScalarProperty Name="IDRemitente" ColumnName="IDRemitente" />
+                <ScalarProperty Name="IDDestinatario" ColumnName="IDDestinatario" />
+                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="Mensaje1" ColumnName="Mensaje" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModalidadAsignaturas">
+            <EntityTypeMapping TypeName="siedModel.ModalidadAsignatura">
+              <MappingFragment StoreEntitySet="ModalidadAsignaturas">
+                <ScalarProperty Name="IDModalidadAsig" ColumnName="IDModalidadAsig" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MomentoCalificacions">
+            <EntityTypeMapping TypeName="siedModel.MomentoCalificacion">
+              <MappingFragment StoreEntitySet="MomentoCalificacion">
+                <ScalarProperty Name="IDMomento" ColumnName="IDMomento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Municipios">
+            <EntityTypeMapping TypeName="siedModel.Municipio">
+              <MappingFragment StoreEntitySet="Municipio">
+                <ScalarProperty Name="IDMunicipio" ColumnName="IDMunicipio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IDEstado" ColumnName="IDEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="siedModel.Pai">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="IDPais" ColumnName="IDPais" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PeriodoEscolars">
+            <EntityTypeMapping TypeName="siedModel.PeriodoEscolar">
+              <MappingFragment StoreEntitySet="PeriodoEscolar">
+                <ScalarProperty Name="IDPeriodo" ColumnName="IDPeriodo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="IDCicloEscolar" ColumnName="IDCicloEscolar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanesEstudios">
+            <EntityTypeMapping TypeName="siedModel.PlanesEstudio">
+              <MappingFragment StoreEntitySet="PlanesEstudio">
+                <ScalarProperty Name="IDPlanEstudios" ColumnName="IDPlanEstudios" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Semestres">
+            <EntityTypeMapping TypeName="siedModel.Semestre">
+              <MappingFragment StoreEntitySet="Semestres">
+                <ScalarProperty Name="IDSemestre" ColumnName="IDSemestre" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SolicitudBajas">
+            <EntityTypeMapping TypeName="siedModel.SolicitudBaja">
+              <MappingFragment StoreEntitySet="SolicitudBaja">
+                <ScalarProperty Name="IDSolicitud" ColumnName="IDSolicitud" />
+                <ScalarProperty Name="TipoBaja" ColumnName="TipoBaja" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="IDAlumno" ColumnName="IDAlumno" />
+                <ScalarProperty Name="NoOficio" ColumnName="NoOficio" />
+                <ScalarProperty Name="IDPeriodo" ColumnName="IDPeriodo" />
+                <ScalarProperty Name="FechaBaja" ColumnName="FechaBaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="siedModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoAlumnoes">
+            <EntityTypeMapping TypeName="siedModel.TipoAlumno">
+              <MappingFragment StoreEntitySet="TipoAlumno">
+                <ScalarProperty Name="IDTIpoAlumno" ColumnName="IDTIpoAlumno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoAsignaturas">
+            <EntityTypeMapping TypeName="siedModel.TipoAsignatura">
+              <MappingFragment StoreEntitySet="TipoAsignaturas">
+                <ScalarProperty Name="IDTipoAsig" ColumnName="IDTipoAsig" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMaestroes">
+            <EntityTypeMapping TypeName="siedModel.TipoMaestro">
+              <MappingFragment StoreEntitySet="TipoMaestro">
+                <ScalarProperty Name="IDTipoMaestro" ColumnName="IDTipoMaestro" />
+                <ScalarProperty Name="Directivo" ColumnName="Directivo" />
+                <ScalarProperty Name="SecreAdmin" ColumnName="SecreAdmin" />
+                <ScalarProperty Name="SecreAcade" ColumnName="SecreAcade" />
+                <ScalarProperty Name="ControlEsc" ColumnName="ControlEsc" />
+                <ScalarProperty Name="Docente" ColumnName="Docente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TurnosEscuelas">
+            <EntityTypeMapping TypeName="siedModel.TurnosEscuela">
+              <MappingFragment StoreEntitySet="TurnosEscuelas">
+                <ScalarProperty Name="IDTurno" ColumnName="IDTurno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CalificacionesAlumnoes">
+            <EntityTypeMapping TypeName="siedModel.CalificacionesAlumno">
+              <MappingFragment StoreEntitySet="CalificacionesAlumno">
+                <ScalarProperty Name="IDCalificacionAlum" ColumnName="IDCalificacionAlum" />
+                <ScalarProperty Name="IDAlumno" ColumnName="IDAlumno" />
+                <ScalarProperty Name="IDAsignatura" ColumnName="IDAsignatura" />
+                <ScalarProperty Name="IDMomento" ColumnName="IDMomento" />
+                <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+                <ScalarProperty Name="IDGrupo" ColumnName="IDGrupo" />
+                <ScalarProperty Name="Inasistencias" ColumnName="Inasistencias" />
+                <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
