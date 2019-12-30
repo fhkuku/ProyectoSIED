@@ -55,10 +55,6 @@ var table = $("#table_categoria").DataTable({
         },
     });
 
-  
-
-
-
 var AjaxResponse = function (e) {
     data = $(e).data()
             var id = data.id
@@ -101,15 +97,27 @@ $("#check").change(function () {
     btn_Delete.toggle()
 })
 
+
 $(".borrarCheckItem").click(function () {
-    var id = $(".checkItem:checked").each(function () {
-        return $(this).val()
+    Swal.fire({
+        title: "Eliminar",
+        text: "sera eliminado ¿estas seguro?",
+        type: "question",
+        showCancelButton: true,
+        confirmButtonText: "Accepter",
+        cancelButtonText: "Annuler"
+    }).then(function (result) {
+        if (result.value) {
+            var id = $(".checkItem:checked").each(function () {
+               return $(this).val()
+            })
+            var list = []
+            for (var i = 0; i < id.length; i++) {
+                list.push(id[i].attributes.value.nodeValue)
+            }
+            ajaxRecicler(list.toString())
+        }
     })
-    var list = []
-    for (var i = 0; i < id.length; i++) {
-        list.push(id[i].attributes.value.nodeValue)
-    }
-    ajaxRecicler(list.toString())
 })
 
 var ajaxRecicler = function (id) {
@@ -127,19 +135,4 @@ var ajaxRecicler = function (id) {
             error: function () {
             }
         });
-}
-
-function alertaEliminar() {
-    Swal.fire({
-        title: "Eliminar",
-        text: "sera eliminado ¿estas seguro?",
-        type: "question",
-        showCancelButton: true,
-        confirmButtonText: "Accepter",
-        cancelButtonText: "Annuler"
-    }).then(function (result) {
-        if (resul.value) {
-            return true
-        }
-    })
 }

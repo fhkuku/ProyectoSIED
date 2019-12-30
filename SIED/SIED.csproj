@@ -262,6 +262,7 @@
     <Content Include="Content\paper-dashboard.css" />
     <Content Include="Content\transicion.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\BancoPreguntas.js" />
     <Content Include="Scripts\bootstrap-notify.js" />
@@ -312,6 +313,11 @@
     <Content Include="fonts\nucleo-icons.ttf" />
     <Content Include="fonts\nucleo-icons.woff" />
     <Content Include="fonts\nucleo-icons.woff2" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Categorias.cshtml" />
     <Content Include="Views\Shared\scripts.cshtml" />

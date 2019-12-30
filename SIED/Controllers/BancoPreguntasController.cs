@@ -27,46 +27,50 @@ namespace SIED.Controllers
                 categoria.nombre = model.nombre.Trim();
                 categoria.comentario = model.comentario.Trim();
                 var verificar = context.CategoriaPreguntas.Where(x => x.nombre == categoria.nombre).ToList();
-                if (verificar.Count > 0)
-                {
+                if (verificar.Count > 0){
                     alerta = new string[] { "simple", "info", "Atención", "Ya existe esta categoría" };
-                    return JavaScript(sweet.SweetAlert(alerta));
-                }
-                else
-                {
+                }else{
                     context.CategoriaPreguntas.Add(categoria);
-                    if (context.SaveChanges() > 0)
-                    {
+                    if (context.SaveChanges() > 0){
                         alerta = new string[] { "clean", "success", "Exito", "Se ha añadido exitosamente la categoría" };
-                        return JavaScript(sweet.SweetAlert(alerta));
+                       
+                    }else{
+                        alerta = new string[] { "simple", "error", "Lo sentimos", "Se ha generado un error intentelo de nuevo" };
                     }
-                    else
-                    {
-                        respuesta = "nop";
-                    }
+                    
                 }
+                return JavaScript(sweet.SweetAlert(alerta));
             }
             return Content(respuesta);
         }
         [WebMethod]
-        public ActionResult GetCategorias(DataTablesParam param) {
+
+
+        public ActionResult GetCategorias(DataTablesParam param)
+        {
             var listCategoria = context.CategoriaPreguntas.OrderBy(x => x.id).Distinct().ToList();
-            return Json(new{aaData = listCategoria,
+            return Json(new
+            {
+                aaData = listCategoria,
                 sEcho = param.sEcho,
                 iDisplayTotalRecords = listCategoria.Count,
                 iTotalRecords = listCategoria.Count
             }, JsonRequestBehavior.AllowGet);
         }
+   
+
+
+
+
         [WebMethod]
         public ActionResult ModificarCategoria() {
             categoria = context.CategoriaPreguntas.Find(Convert.ToInt32(Request.Form["id"]));
-            categoria.nombre = Request.Form["nombre"];
-            categoria.comentario = Request.Form["comentario"];
+            categoria.nombre = Request.Form["nombre"].Trim();
+            categoria.comentario = Request.Form["comentario"].Trim();
             if (context.SaveChanges() > 0){
                 alerta = new string[] { "simple", "success", "Exito", "Se ha actualizado exitosamente la información" };
                 return JavaScript(sweet.SweetAlert(alerta));
-            }
-            else{
+            }else{
                 respuesta = "nop";
             }
             return Content(respuesta);
@@ -76,14 +80,13 @@ namespace SIED.Controllers
         [WebMethod]
         public ActionResult EliminarCategoria()
         {
-            categoria = new CategoriaPregunta { id = Convert.ToInt32(Request.Form["id"]) };
+            categoria = new CategoriaPregunta { id = Convert.ToInt32(Request.Form["id"].Trim())};
             context.CategoriaPreguntas.Attach(categoria);
             context.CategoriaPreguntas.Remove(categoria);
             if (context.SaveChanges() > 0){
                 alerta = new string[] { "simple", "success", "  Exito", "Se ha eliminado exitosamente" };
                 return JavaScript(sweet.SweetAlert(alerta));
-            }
-            else{
+            }else{
                 respuesta = "nop";
             }
             return Content(respuesta);
@@ -100,8 +103,7 @@ namespace SIED.Controllers
             if (succes > 0){
                 alerta = new string[] { "simple", "success", "Exito", "Se ha eliminado exitosamente" };
                 return JavaScript(sweet.SweetAlert(alerta));
-            }
-            else{
+            }else{
                 respuesta = "nop";
             }
             return Content(respuesta);

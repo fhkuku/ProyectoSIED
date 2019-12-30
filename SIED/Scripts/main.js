@@ -52,7 +52,7 @@
                         boton.html(texto)
                         boton.attr("disabled", false);
                     }
-
+                    table.ajax.reload(false, null);
                     respuesta.html(data);
                 },
                 error: function () {
