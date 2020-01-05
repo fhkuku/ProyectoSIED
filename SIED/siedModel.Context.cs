@@ -57,5 +57,10 @@ namespace SIED
         public virtual DbSet<TipoMaestro> TipoMaestroes { get; set; }
         public virtual DbSet<TurnosEscuela> TurnosEscuelas { get; set; }
         public virtual DbSet<CalificacionesAlumno> CalificacionesAlumnoes { get; set; }
+        public virtual DbSet<EvaluacionDocente> EvaluacionDocentes { get; set; }
+        public virtual DbSet<Pregunta> Preguntas { get; set; }
+        public virtual DbSet<Preguntas_EvaluacionDocente> Preguntas_EvaluacionDocente { get; set; }
+        public virtual DbSet<Respuesta> Respuestas { get; set; }
+        public virtual DbSet<Respuesta_CategoriaPregunta> Respuesta_CategoriaPregunta { get; set; }
     }
 }

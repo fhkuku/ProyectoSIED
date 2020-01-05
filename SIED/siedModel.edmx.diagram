@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6992f7f564b744d09e4e8af3e665f096" Name="Diagram1" ZoomLevel="108">
+      <Diagram DiagramId="6992f7f564b744d09e4e8af3e665f096" Name="Diagram1" ZoomLevel="79">
         <EntityTypeShape EntityType="siedModel.Alumno" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="siedModel.Asignatura" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="siedModel.Aviso" Width="1.5" PointX="8.25" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="siedModel.AvisosPadre" Width="1.5" PointX="10.75" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="siedModel.Calificacione" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="siedModel.CategoriaPregunta" Width="1.5" PointX="12.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="siedModel.CategoriaPregunta" Width="1.5" PointX="16.625" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="siedModel.CicloEscolar" Width="1.5" PointX="1.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="siedModel.DatosEscuela" Width="1.5" PointX="6" PointY="23" IsExpanded="true" />
         <EntityTypeShape EntityType="siedModel.DepartamentosEscuela" Width="1.5" PointX="8.25" PointY="29.375" IsExpanded="true" />
@@ -74,6 +74,18 @@
         <AssociationConnector Association="siedModel.FK_Maestros_Municipio" ManuallyRouted="false" />
         <AssociationConnector Association="siedModel.FK_Maestros_TipoMaestro" ManuallyRouted="false" />
         <AssociationConnector Association="siedModel.FK_SolicitudBaja_PeriodoEscolar" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="siedModel.EvaluacionDocente" Width="1.5" PointX="22.875" PointY="4.75" />
+        <EntityTypeShape EntityType="siedModel.Pregunta" Width="1.5" PointX="20.125" PointY="0.5" />
+        <EntityTypeShape EntityType="siedModel.Preguntas_EvaluacionDocente" Width="1.5" PointX="22.875" PointY="0.5" />
+        <EntityTypeShape EntityType="siedModel.Respuesta" Width="1.5" PointX="19.375" PointY="4.25" />
+        <EntityTypeShape EntityType="siedModel.Respuesta_CategoriaPregunta" Width="1.5" PointX="16.75" PointY="4" />
+        <AssociationConnector Association="siedModel.FK_EvaluacionDocente_Alumnos" />
+        <AssociationConnector Association="siedModel.FK_Pregunta_CategoriaPregunta" />
+        <AssociationConnector Association="siedModel.FK_Respuesta_CategoriaPregunta_CategoriaPregunta" />
+        <AssociationConnector Association="siedModel.FK_EvaluacionDocente_MaestroGrupos" />
+        <AssociationConnector Association="siedModel.FK_Preguntas_EvaluacionDocente_EvaluacionDocente" />
+        <AssociationConnector Association="siedModel.FK_Preguntas_EvaluacionDocente_Pregunta" />
+        <AssociationConnector Association="siedModel.FK_Respuesta_CategoriaPregunta_Respuesta" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
