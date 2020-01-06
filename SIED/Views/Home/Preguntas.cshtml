@@ -1,0 +1,124 @@
+﻿@using SIED.Models.ViewModels;
+@model dynamic
+@{
+    ViewBag.Title = "Preguntas";
+}
+<div class="content">
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="card card-user">
+                <div class="card-header">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#colapsar" aria-expanded="true" aria-controls="collapseOne">
+                        Añadir Pregunta
+                        <i class="nc-icon nc-icon nc-minimal-down"></i>
+                    </a>
+                </div>
+                <div id="colapsar" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                    <form class="card-body FormAjax" data-form="save" action="~/BancoPreguntas/AgregarCategoria" method="post">
+                        <div id="formulario">
+                            <div class="row p-3">
+                                <div class="col-md-4 px-2">
+                                    <div class="form-row">
+                                        <label>Pregunta</label>
+                                        @Html.TextBox("pregunta1", null, new { @class = "form-control", @placeholder = "Ingrese la pregunta" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-2">
+                                    <label for="exampleFormControlSelect1">Example select</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        @foreach (listCategoriaViewModel categoria in Model.Categorias)
+                                        {
+                                            <option>@categoria.Nombre</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-4 px-2">
+                                    <button type="button" class="btn btn-info" onclick="AddTextBox()">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="update ml-auto mr-auto">
+                                <button type="submit" class="btn btn-primary btn-round boton">Añadir categoría</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <button class="borrarCheckItem"></button>
+                <div class="col-md-12">
+                    <div class="card card-body">
+                        <table id="table_categoria" class="display table-bordered table-hover table responsive wrap" style="width:100%;">
+                            <thead>
+                                <tr>
+                                    <th width="5%"><input type="checkbox" id="check" /></th>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Comentario</th>
+                                    <th width="10%">Ver</th>
+                                    <th width="10%">Borrar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+
+
+    function GetDynamicTextbox(value) {
+        return ` 
+            <div class="row p-3">
+                            <div class="col-md-4 px-2">
+                                <div class="form-row">
+                                    <label>Pregunta</label>
+                                    @Html.TextBox("pregunta1", null, new { @class = "form-control" ,@placeholder="Ingrese la pregunta" })
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-2">
+                                <label for="exampleFormControlSelect1">Example select</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    @foreach (listCategoriaViewModel categoria in Model.Categorias)
+                                    {
+                                        <option>@categoria.Nombre</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-4 px-2">
+                                <button type="button" class="btn btn-danger" onclick="RemoveTextBox(this)">-</button>
+                            </div>
+                        </div>
+        `
+    }
+
+    function AddTextBox() {
+        console.log('here')
+        var div = document.createElement('DIV');
+
+        div.innerHTML = GetDynamicTextbox("");
+
+        document.getElementById("formulario").appendChild(div);
+
+    }
+
+    function RemoveTextBox(div) {
+
+        document.getElementById("formulario").removeChild(div.parentNode.parentNode);
+
+    }
+
+</script>

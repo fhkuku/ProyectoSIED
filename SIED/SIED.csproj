@@ -201,6 +201,8 @@
     </Compile>
     <Compile Include="Models\alertas.cs" />
     <Compile Include="Models\DataTablesParam.cs" />
+    <Compile Include="Models\ViewModels\listCategoriaViewModel.cs" />
+    <Compile Include="Models\ViewModels\listPreguntasViewModel.cs" />
     <Compile Include="MomentoCalificacion.cs">
       <DependentUpon>siedModel.tt</DependentUpon>
     </Compile>
@@ -348,6 +350,7 @@
     </Content>
     <Content Include="Views\Shared\footer.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Home\Preguntas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
