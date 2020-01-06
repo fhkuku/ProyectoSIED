@@ -53,7 +53,7 @@ namespace SIED.Controllers
                                        id = c.id,
                                        nombre = c.nombre,
                                        comentario = c.comentario
-                                   }).OrderBy(x=> x.id).ToList();
+                                   }).OrderBy(x=> x.id).Distinct().ToList();
             
             var listCategoria = context.CategoriaPreguntas.OrderBy(x => x.id).Distinct().ToList();
 
