@@ -18,13 +18,16 @@
                                 <div class="col-md-8 px-2">
                                     <div class="form-row">
                                         <label>Nombre de la categoría</label>
+                                        
                                         @Html.TextBoxFor(model=>model.nombre, new { @class = "form-control formulario",@placeholder="Ingrese el nombre" })
+                                        @Html.ValidationMessageFor(model => model.nombre, "", new { @class ="text-danger"})
                                     </div>
                                 </div>
                                 <div class="col-md-12 px-1">
                                     <div class="form-group">
                                         <label>Información sobre la categoría</label>
                                         @Html.TextAreaFor(model=>model.comentario, new {@class="form-control formulario", @placeholder="Ingrese un comentario sobre la categoría"})
+                                        
                                     </div>
                                 </div>
                             </div>
