@@ -44,8 +44,6 @@ namespace SIED.Controllers
             return Content(respuesta);
         }
         [WebMethod]
-
-
         public ActionResult GetCategorias(DataTablesParam param)
         {
             var listCategoria = context.CategoriaPreguntas.OrderBy(x => x.id).Distinct().ToList();
@@ -57,10 +55,6 @@ namespace SIED.Controllers
                 iTotalRecords = listCategoria.Count
             }, JsonRequestBehavior.AllowGet);
         }
-   
-
-
-
 
         [WebMethod]
         public ActionResult ModificarCategoria() {
@@ -75,8 +69,6 @@ namespace SIED.Controllers
             }
             return Content(respuesta);
         }
-
-
         [WebMethod]
         public ActionResult EliminarCategoria()
         {
