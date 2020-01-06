@@ -14,6 +14,12 @@ namespace SIED
     
     public partial class MaestroGrupos
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MaestroGrupos()
+        {
+            this.EvaluacionDocentes = new HashSet<EvaluacionDocente>();
+        }
+    
         public int IDMaestroGrupo { get; set; }
         public Nullable<int> IDMaestro { get; set; }
         public Nullable<int> IDGrupo { get; set; }
@@ -24,5 +30,7 @@ namespace SIED
         public virtual Grupos Grupos { get; set; }
         public virtual Maestro Maestro { get; set; }
         public virtual PeriodoEscolar PeriodoEscolar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EvaluacionDocente> EvaluacionDocentes { get; set; }
     }
 }

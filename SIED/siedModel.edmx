@@ -185,6 +185,15 @@
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="IDPais" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="EvaluacionDocente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="idAlumno" Type="int" Nullable="false" />
+          <Property Name="idMaestroGrupos" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="FechaCalificacion">
           <Key>
             <PropertyRef Name="IDFechaCalif" />
@@ -306,6 +315,37 @@
           <Property Name="IDPlanEstudios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Pregunta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pregunta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Preguntas_EvaluacionDocente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="idPregunta" Type="int" Nullable="false" />
+          <Property Name="idEvaluacionDocente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Respuesta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="respuesta" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Respuesta_CategoriaPregunta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRespuesta" Type="int" />
+          <Property Name="idCategoriaPregunta" Type="int" />
         </EntityType>
         <EntityType Name="Semestres">
           <Key>
@@ -608,6 +648,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EvaluacionDocente_Alumnos">
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="1" />
+          <End Role="EvaluacionDocente" Type="Self.EvaluacionDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="IDAlumno" />
+            </Principal>
+            <Dependent Role="EvaluacionDocente">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EvaluacionDocente_MaestroGrupos">
+          <End Role="MaestroGrupos" Type="Self.MaestroGrupos" Multiplicity="1" />
+          <End Role="EvaluacionDocente" Type="Self.EvaluacionDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroGrupos">
+              <PropertyRef Name="IDMaestroGrupo" />
+            </Principal>
+            <Dependent Role="EvaluacionDocente">
+              <PropertyRef Name="idMaestroGrupos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FechaCalificacion_FechaCalificacion">
           <End Role="MomentoCalificacion" Type="Self.MomentoCalificacion" Multiplicity="0..1" />
           <End Role="FechaCalificacion" Type="Self.FechaCalificacion" Multiplicity="*" />
@@ -788,6 +852,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Pregunta_CategoriaPregunta">
+          <End Role="CategoriaPregunta" Type="Self.CategoriaPregunta" Multiplicity="1" />
+          <End Role="Pregunta" Type="Self.Pregunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaPregunta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pregunta">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Preguntas_EvaluacionDocente_EvaluacionDocente">
+          <End Role="EvaluacionDocente" Type="Self.EvaluacionDocente" Multiplicity="1" />
+          <End Role="Preguntas_EvaluacionDocente" Type="Self.Preguntas_EvaluacionDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EvaluacionDocente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Preguntas_EvaluacionDocente">
+              <PropertyRef Name="idEvaluacionDocente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Preguntas_EvaluacionDocente_Pregunta">
+          <End Role="Pregunta" Type="Self.Pregunta" Multiplicity="1" />
+          <End Role="Preguntas_EvaluacionDocente" Type="Self.Preguntas_EvaluacionDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pregunta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Preguntas_EvaluacionDocente">
+              <PropertyRef Name="idPregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Respuesta_CategoriaPregunta_CategoriaPregunta">
+          <End Role="CategoriaPregunta" Type="Self.CategoriaPregunta" Multiplicity="0..1" />
+          <End Role="Respuesta_CategoriaPregunta" Type="Self.Respuesta_CategoriaPregunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaPregunta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Respuesta_CategoriaPregunta">
+              <PropertyRef Name="idCategoriaPregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Respuesta_CategoriaPregunta_Respuesta">
+          <End Role="Respuesta" Type="Self.Respuesta" Multiplicity="0..1" />
+          <End Role="Respuesta_CategoriaPregunta" Type="Self.Respuesta_CategoriaPregunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Respuesta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Respuesta_CategoriaPregunta">
+              <PropertyRef Name="idRespuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SolicitudBaja_Alumnos">
           <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="0..1" />
           <End Role="SolicitudBaja" Type="Self.SolicitudBaja" Multiplicity="*" />
@@ -826,6 +950,7 @@
           <EntitySet Name="DocumentosAlumno" EntityType="Self.DocumentosAlumno" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EscuelasProcedenciaAlumnos" EntityType="Self.EscuelasProcedenciaAlumnos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EvaluacionDocente" EntityType="Self.EvaluacionDocente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FechaCalificacion" EntityType="Self.FechaCalificacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GrupoAsignatura" EntityType="Self.GrupoAsignatura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grupos" EntityType="Self.Grupos" Schema="dbo" store:Type="Tables" />
@@ -838,6 +963,10 @@
           <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PeriodoEscolar" EntityType="Self.PeriodoEscolar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlanesEstudio" EntityType="Self.PlanesEstudio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pregunta" EntityType="Self.Pregunta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preguntas_EvaluacionDocente" EntityType="Self.Preguntas_EvaluacionDocente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Respuesta" EntityType="Self.Respuesta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Respuesta_CategoriaPregunta" EntityType="Self.Respuesta_CategoriaPregunta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Semestres" EntityType="Self.Semestres" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SolicitudBaja" EntityType="Self.SolicitudBaja" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -925,6 +1054,14 @@
             <End Role="Pais" EntitySet="Pais" />
             <End Role="Estado" EntitySet="Estado" />
           </AssociationSet>
+          <AssociationSet Name="FK_EvaluacionDocente_Alumnos" Association="Self.FK_EvaluacionDocente_Alumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="EvaluacionDocente" EntitySet="EvaluacionDocente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EvaluacionDocente_MaestroGrupos" Association="Self.FK_EvaluacionDocente_MaestroGrupos">
+            <End Role="MaestroGrupos" EntitySet="MaestroGrupos" />
+            <End Role="EvaluacionDocente" EntitySet="EvaluacionDocente" />
+          </AssociationSet>
           <AssociationSet Name="FK_FechaCalificacion_FechaCalificacion" Association="Self.FK_FechaCalificacion_FechaCalificacion">
             <End Role="MomentoCalificacion" EntitySet="MomentoCalificacion" />
             <End Role="FechaCalificacion" EntitySet="FechaCalificacion" />
@@ -984,6 +1121,26 @@
           <AssociationSet Name="FK_PeriodoEscolar_CicloEscolar" Association="Self.FK_PeriodoEscolar_CicloEscolar">
             <End Role="CicloEscolar" EntitySet="CicloEscolar" />
             <End Role="PeriodoEscolar" EntitySet="PeriodoEscolar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pregunta_CategoriaPregunta" Association="Self.FK_Pregunta_CategoriaPregunta">
+            <End Role="CategoriaPregunta" EntitySet="CategoriaPregunta" />
+            <End Role="Pregunta" EntitySet="Pregunta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Preguntas_EvaluacionDocente_EvaluacionDocente" Association="Self.FK_Preguntas_EvaluacionDocente_EvaluacionDocente">
+            <End Role="EvaluacionDocente" EntitySet="EvaluacionDocente" />
+            <End Role="Preguntas_EvaluacionDocente" EntitySet="Preguntas_EvaluacionDocente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Preguntas_EvaluacionDocente_Pregunta" Association="Self.FK_Preguntas_EvaluacionDocente_Pregunta">
+            <End Role="Pregunta" EntitySet="Pregunta" />
+            <End Role="Preguntas_EvaluacionDocente" EntitySet="Preguntas_EvaluacionDocente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Respuesta_CategoriaPregunta_CategoriaPregunta" Association="Self.FK_Respuesta_CategoriaPregunta_CategoriaPregunta">
+            <End Role="CategoriaPregunta" EntitySet="CategoriaPregunta" />
+            <End Role="Respuesta_CategoriaPregunta" EntitySet="Respuesta_CategoriaPregunta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Respuesta_CategoriaPregunta_Respuesta" Association="Self.FK_Respuesta_CategoriaPregunta_Respuesta">
+            <End Role="Respuesta" EntitySet="Respuesta" />
+            <End Role="Respuesta_CategoriaPregunta" EntitySet="Respuesta_CategoriaPregunta" />
           </AssociationSet>
           <AssociationSet Name="FK_SolicitudBaja_Alumnos" Association="Self.FK_SolicitudBaja_Alumnos">
             <End Role="Alumnos" EntitySet="Alumnos" />
@@ -1046,6 +1203,7 @@
           <NavigationProperty Name="Avisoes" Relationship="Self.FK_Aviso_Alumnos" FromRole="Alumnos" ToRole="Aviso" />
           <NavigationProperty Name="Calificaciones" Relationship="Self.FK_Calificaciones_Alumnos" FromRole="Alumnos" ToRole="Calificaciones" />
           <NavigationProperty Name="SolicitudBajas" Relationship="Self.FK_SolicitudBaja_Alumnos" FromRole="Alumnos" ToRole="SolicitudBaja" />
+          <NavigationProperty Name="EvaluacionDocentes" Relationship="siedModel.FK_EvaluacionDocente_Alumnos" FromRole="Alumno" ToRole="EvaluacionDocente" />
         </EntityType>
         <EntityType Name="Asignatura">
           <Key>
@@ -1117,6 +1275,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Preguntas" Relationship="siedModel.FK_Pregunta_CategoriaPregunta" FromRole="CategoriaPregunta" ToRole="Pregunta" />
+          <NavigationProperty Name="Respuesta_CategoriaPregunta" Relationship="siedModel.FK_Respuesta_CategoriaPregunta_CategoriaPregunta" FromRole="CategoriaPregunta" ToRole="Respuesta_CategoriaPregunta" />
         </EntityType>
         <EntityType Name="CicloEscolar">
           <Key>
@@ -1249,6 +1409,7 @@
           <NavigationProperty Name="Grupos" Relationship="Self.FK_MaestroGrupos_Grupos" FromRole="MaestroGrupos" ToRole="Grupos" />
           <NavigationProperty Name="Maestro" Relationship="Self.FK_MaestroGrupos_Maestros" FromRole="MaestroGrupos" ToRole="Maestros" />
           <NavigationProperty Name="PeriodoEscolar" Relationship="Self.FK_MaestroGrupos_PeriodoEscolar" FromRole="MaestroGrupos" ToRole="PeriodoEscolar" />
+          <NavigationProperty Name="EvaluacionDocentes" Relationship="siedModel.FK_EvaluacionDocente_MaestroGrupos" FromRole="MaestroGrupos" ToRole="EvaluacionDocente" />
         </EntityType>
         <EntityType Name="Maestro">
           <Key>
@@ -2060,7 +2221,174 @@
             <End Role="PeriodoEscolar" EntitySet="PeriodoEscolars" />
             <End Role="SolicitudBaja" EntitySet="SolicitudBajas" />
           </AssociationSet>
+          <EntitySet Name="EvaluacionDocentes" EntityType="siedModel.EvaluacionDocente" />
+          <EntitySet Name="Preguntas" EntityType="siedModel.Pregunta" />
+          <EntitySet Name="Preguntas_EvaluacionDocente" EntityType="siedModel.Preguntas_EvaluacionDocente" />
+          <EntitySet Name="Respuestas" EntityType="siedModel.Respuesta" />
+          <EntitySet Name="Respuesta_CategoriaPregunta" EntityType="siedModel.Respuesta_CategoriaPregunta" />
+          <AssociationSet Name="FK_EvaluacionDocente_Alumnos" Association="siedModel.FK_EvaluacionDocente_Alumnos">
+            <End Role="Alumno" EntitySet="Alumnos" />
+            <End Role="EvaluacionDocente" EntitySet="EvaluacionDocentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pregunta_CategoriaPregunta" Association="siedModel.FK_Pregunta_CategoriaPregunta">
+            <End Role="CategoriaPregunta" EntitySet="CategoriaPreguntas" />
+            <End Role="Pregunta" EntitySet="Preguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Respuesta_CategoriaPregunta_CategoriaPregunta" Association="siedModel.FK_Respuesta_CategoriaPregunta_CategoriaPregunta">
+            <End Role="CategoriaPregunta" EntitySet="CategoriaPreguntas" />
+            <End Role="Respuesta_CategoriaPregunta" EntitySet="Respuesta_CategoriaPregunta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EvaluacionDocente_MaestroGrupos" Association="siedModel.FK_EvaluacionDocente_MaestroGrupos">
+            <End Role="MaestroGrupos" EntitySet="MaestroGrupos" />
+            <End Role="EvaluacionDocente" EntitySet="EvaluacionDocentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Preguntas_EvaluacionDocente_EvaluacionDocente" Association="siedModel.FK_Preguntas_EvaluacionDocente_EvaluacionDocente">
+            <End Role="EvaluacionDocente" EntitySet="EvaluacionDocentes" />
+            <End Role="Preguntas_EvaluacionDocente" EntitySet="Preguntas_EvaluacionDocente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Preguntas_EvaluacionDocente_Pregunta" Association="siedModel.FK_Preguntas_EvaluacionDocente_Pregunta">
+            <End Role="Pregunta" EntitySet="Preguntas" />
+            <End Role="Preguntas_EvaluacionDocente" EntitySet="Preguntas_EvaluacionDocente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Respuesta_CategoriaPregunta_Respuesta" Association="siedModel.FK_Respuesta_CategoriaPregunta_Respuesta">
+            <End Role="Respuesta" EntitySet="Respuestas" />
+            <End Role="Respuesta_CategoriaPregunta" EntitySet="Respuesta_CategoriaPregunta" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="EvaluacionDocente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="idAlumno" Type="Int32" Nullable="false" />
+          <Property Name="idMaestroGrupos" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alumno" Relationship="siedModel.FK_EvaluacionDocente_Alumnos" FromRole="EvaluacionDocente" ToRole="Alumno" />
+          <NavigationProperty Name="MaestroGrupos" Relationship="siedModel.FK_EvaluacionDocente_MaestroGrupos" FromRole="EvaluacionDocente" ToRole="MaestroGrupos" />
+          <NavigationProperty Name="Preguntas_EvaluacionDocente" Relationship="siedModel.FK_Preguntas_EvaluacionDocente_EvaluacionDocente" FromRole="EvaluacionDocente" ToRole="Preguntas_EvaluacionDocente" />
+        </EntityType>
+        <EntityType Name="Pregunta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pregunta1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CategoriaPregunta" Relationship="siedModel.FK_Pregunta_CategoriaPregunta" FromRole="Pregunta" ToRole="CategoriaPregunta" />
+          <NavigationProperty Name="Preguntas_EvaluacionDocente" Relationship="siedModel.FK_Preguntas_EvaluacionDocente_Pregunta" FromRole="Pregunta" ToRole="Preguntas_EvaluacionDocente" />
+        </EntityType>
+        <EntityType Name="Preguntas_EvaluacionDocente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="idPregunta" Type="Int32" Nullable="false" />
+          <Property Name="idEvaluacionDocente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EvaluacionDocente" Relationship="siedModel.FK_Preguntas_EvaluacionDocente_EvaluacionDocente" FromRole="Preguntas_EvaluacionDocente" ToRole="EvaluacionDocente" />
+          <NavigationProperty Name="Pregunta" Relationship="siedModel.FK_Preguntas_EvaluacionDocente_Pregunta" FromRole="Preguntas_EvaluacionDocente" ToRole="Pregunta" />
+        </EntityType>
+        <EntityType Name="Respuesta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="respuesta1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Respuesta_CategoriaPregunta" Relationship="siedModel.FK_Respuesta_CategoriaPregunta_Respuesta" FromRole="Respuesta" ToRole="Respuesta_CategoriaPregunta" />
+        </EntityType>
+        <EntityType Name="Respuesta_CategoriaPregunta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRespuesta" Type="Int32" />
+          <Property Name="idCategoriaPregunta" Type="Int32" />
+          <NavigationProperty Name="CategoriaPregunta" Relationship="siedModel.FK_Respuesta_CategoriaPregunta_CategoriaPregunta" FromRole="Respuesta_CategoriaPregunta" ToRole="CategoriaPregunta" />
+          <NavigationProperty Name="Respuesta" Relationship="siedModel.FK_Respuesta_CategoriaPregunta_Respuesta" FromRole="Respuesta_CategoriaPregunta" ToRole="Respuesta" />
+        </EntityType>
+        <Association Name="FK_EvaluacionDocente_Alumnos">
+          <End Type="siedModel.Alumno" Role="Alumno" Multiplicity="1" />
+          <End Type="siedModel.EvaluacionDocente" Role="EvaluacionDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="IDAlumno" />
+            </Principal>
+            <Dependent Role="EvaluacionDocente">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pregunta_CategoriaPregunta">
+          <End Type="siedModel.CategoriaPregunta" Role="CategoriaPregunta" Multiplicity="1" />
+          <End Type="siedModel.Pregunta" Role="Pregunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaPregunta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pregunta">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Respuesta_CategoriaPregunta_CategoriaPregunta">
+          <End Type="siedModel.CategoriaPregunta" Role="CategoriaPregunta" Multiplicity="0..1" />
+          <End Type="siedModel.Respuesta_CategoriaPregunta" Role="Respuesta_CategoriaPregunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaPregunta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Respuesta_CategoriaPregunta">
+              <PropertyRef Name="idCategoriaPregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EvaluacionDocente_MaestroGrupos">
+          <End Type="siedModel.MaestroGrupos" Role="MaestroGrupos" Multiplicity="1" />
+          <End Type="siedModel.EvaluacionDocente" Role="EvaluacionDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroGrupos">
+              <PropertyRef Name="IDMaestroGrupo" />
+            </Principal>
+            <Dependent Role="EvaluacionDocente">
+              <PropertyRef Name="idMaestroGrupos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Preguntas_EvaluacionDocente_EvaluacionDocente">
+          <End Type="siedModel.EvaluacionDocente" Role="EvaluacionDocente" Multiplicity="1" />
+          <End Type="siedModel.Preguntas_EvaluacionDocente" Role="Preguntas_EvaluacionDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EvaluacionDocente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Preguntas_EvaluacionDocente">
+              <PropertyRef Name="idEvaluacionDocente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Preguntas_EvaluacionDocente_Pregunta">
+          <End Type="siedModel.Pregunta" Role="Pregunta" Multiplicity="1" />
+          <End Type="siedModel.Preguntas_EvaluacionDocente" Role="Preguntas_EvaluacionDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pregunta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Preguntas_EvaluacionDocente">
+              <PropertyRef Name="idPregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Respuesta_CategoriaPregunta_Respuesta">
+          <End Type="siedModel.Respuesta" Role="Respuesta" Multiplicity="0..1" />
+          <End Type="siedModel.Respuesta_CategoriaPregunta" Role="Respuesta_CategoriaPregunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Respuesta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Respuesta_CategoriaPregunta">
+              <PropertyRef Name="idRespuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2459,6 +2787,51 @@
                 <ScalarProperty Name="IDGrupo" ColumnName="IDGrupo" />
                 <ScalarProperty Name="Inasistencias" ColumnName="Inasistencias" />
                 <ScalarProperty Name="FechaCaptura" ColumnName="FechaCaptura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EvaluacionDocentes">
+            <EntityTypeMapping TypeName="siedModel.EvaluacionDocente">
+              <MappingFragment StoreEntitySet="EvaluacionDocente">
+                <ScalarProperty Name="idMaestroGrupos" ColumnName="idMaestroGrupos" />
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preguntas">
+            <EntityTypeMapping TypeName="siedModel.Pregunta">
+              <MappingFragment StoreEntitySet="Pregunta">
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="pregunta1" ColumnName="pregunta" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preguntas_EvaluacionDocente">
+            <EntityTypeMapping TypeName="siedModel.Preguntas_EvaluacionDocente">
+              <MappingFragment StoreEntitySet="Preguntas_EvaluacionDocente">
+                <ScalarProperty Name="idEvaluacionDocente" ColumnName="idEvaluacionDocente" />
+                <ScalarProperty Name="idPregunta" ColumnName="idPregunta" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Respuestas">
+            <EntityTypeMapping TypeName="siedModel.Respuesta">
+              <MappingFragment StoreEntitySet="Respuesta">
+                <ScalarProperty Name="respuesta1" ColumnName="respuesta" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Respuesta_CategoriaPregunta">
+            <EntityTypeMapping TypeName="siedModel.Respuesta_CategoriaPregunta">
+              <MappingFragment StoreEntitySet="Respuesta_CategoriaPregunta">
+                <ScalarProperty Name="idCategoriaPregunta" ColumnName="idCategoriaPregunta" />
+                <ScalarProperty Name="idRespuesta" ColumnName="idRespuesta" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

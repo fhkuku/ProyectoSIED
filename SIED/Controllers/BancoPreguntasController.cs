@@ -48,13 +48,21 @@ namespace SIED.Controllers
 
         public ActionResult GetCategorias(DataTablesParam param)
         {
+            var listaCategorias = (from c in context.CategoriaPreguntas
+                                   select new{
+                                       id = c.id,
+                                       nombre = c.nombre,
+                                       comentario = c.comentario
+                                   }).OrderBy(x=> x.id).ToList();
+            
             var listCategoria = context.CategoriaPreguntas.OrderBy(x => x.id).Distinct().ToList();
+
             return Json(new
             {
-                aaData = listCategoria,
+                aaData = listaCategorias,
                 sEcho = param.sEcho,
-                iDisplayTotalRecords = listCategoria.Count,
-                iTotalRecords = listCategoria.Count
+                iDisplayTotalRecords = listaCategorias.Count,
+                iTotalRecords = listaCategorias.Count
             }, JsonRequestBehavior.AllowGet);
         }
    

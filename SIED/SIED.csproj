@@ -172,6 +172,9 @@
     <Compile Include="Estado.cs">
       <DependentUpon>siedModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EvaluacionDocente.cs">
+      <DependentUpon>siedModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="FechaCalificacion.cs">
       <DependentUpon>siedModel.tt</DependentUpon>
     </Compile>
@@ -213,7 +216,19 @@
     <Compile Include="PlanesEstudio.cs">
       <DependentUpon>siedModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pregunta.cs">
+      <DependentUpon>siedModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Preguntas_EvaluacionDocente.cs">
+      <DependentUpon>siedModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Respuesta.cs">
+      <DependentUpon>siedModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Respuesta_CategoriaPregunta.cs">
+      <DependentUpon>siedModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Semestre.cs">
       <DependentUpon>siedModel.tt</DependentUpon>
     </Compile>

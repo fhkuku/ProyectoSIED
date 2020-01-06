@@ -20,6 +20,7 @@ namespace SIED
             this.Avisoes = new HashSet<Aviso>();
             this.Calificaciones = new HashSet<Calificacione>();
             this.SolicitudBajas = new HashSet<SolicitudBaja>();
+            this.EvaluacionDocentes = new HashSet<EvaluacionDocente>();
         }
     
         public int IDAlumno { get; set; }
@@ -70,5 +71,7 @@ namespace SIED
         public virtual ICollection<Calificacione> Calificaciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SolicitudBaja> SolicitudBajas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EvaluacionDocente> EvaluacionDocentes { get; set; }
     }
 }

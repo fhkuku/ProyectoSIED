@@ -12,22 +12,22 @@ namespace SIED
     using System;
     using System.Collections.Generic;
     
-    public partial class CategoriaPregunta
+    public partial class EvaluacionDocente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CategoriaPregunta()
+        public EvaluacionDocente()
         {
-            this.Preguntas = new HashSet<Pregunta>();
-            this.Respuesta_CategoriaPregunta = new HashSet<Respuesta_CategoriaPregunta>();
+            this.Preguntas_EvaluacionDocente = new HashSet<Preguntas_EvaluacionDocente>();
         }
     
         public int id { get; set; }
-        public string nombre { get; set; }
-        public string comentario { get; set; }
+        public System.DateTime fecha { get; set; }
+        public int idAlumno { get; set; }
+        public int idMaestroGrupos { get; set; }
     
+        public virtual Alumno Alumno { get; set; }
+        public virtual MaestroGrupos MaestroGrupos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pregunta> Preguntas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Respuesta_CategoriaPregunta> Respuesta_CategoriaPregunta { get; set; }
+        public virtual ICollection<Preguntas_EvaluacionDocente> Preguntas_EvaluacionDocente { get; set; }
     }
 }
